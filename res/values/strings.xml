@@ -5,4 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 	<string name="facebook_app_id">745825662121972</string>
+	<string name="new_button">New</string>
+	<string name="login_button">Login</string>
+	
+	<color name="orange">#FF8800</color>
 </resources>
