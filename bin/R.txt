@@ -321,7 +321,7 @@ int drawable com_facebook_list_divider 0x7f02006a
 int drawable com_facebook_list_section_header_background 0x7f02006b
 int drawable com_facebook_loginbutton_silver 0x7f02006c
 int drawable com_facebook_logo 0x7f02006d
-int drawable com_facebook_picker_default_separator_color 0x7f020087
+int drawable com_facebook_picker_default_separator_color 0x7f020089
 int drawable com_facebook_picker_item_background 0x7f02006e
 int drawable com_facebook_picker_list_focused 0x7f02006f
 int drawable com_facebook_picker_list_longpressed 0x7f020070
@@ -347,6 +347,8 @@ int drawable com_facebook_top_background 0x7f020083
 int drawable com_facebook_top_button 0x7f020084
 int drawable com_facebook_usersettingsfragment_background_gradient 0x7f020085
 int drawable ic_launcher 0x7f020086
+int drawable wallpaper 0x7f020087
+int drawable wallpaper1 0x7f020088
 int id action_bar 0x7f050027
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f050026
@@ -541,7 +543,6 @@ int string facebook_app_id 0x7f0a002c
 int string hello_world 0x7f0a002a
 int string login_button 0x7f0a002e
 int string new_button 0x7f0a002d
-int style ActionBar 0x7f0b0090
 int style AppBaseTheme 0x7f0b008e
 int style AppTheme 0x7f0b008f
 int style TextAppearance_AppCompat_Base_CompactMenu_Dialog 0x7f0b0063
