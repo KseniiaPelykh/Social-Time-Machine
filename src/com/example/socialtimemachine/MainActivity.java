@@ -21,27 +21,12 @@ public class MainActivity extends FragmentActivity {
 
 	private MainFragment mainFragment;
 	
-	public static void showHashKey(Context context) {
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    "com.example.tryitonjewelry", PackageManager.GET_SIGNATURES); //Your            package name here
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-                }
-        } catch (NameNotFoundException e) {
-        } catch (NoSuchAlgorithmException e) {
-        }
-    }
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		Log.i("mes","mes");
-		showHashKey(this);
+		
 		setContentView(R.layout.activity_main);
-		showHashKey(this);
 		if (savedInstanceState == null) {
 			// Add the fragment on initial activity setup
 			mainFragment = new MainFragment();
@@ -75,10 +60,5 @@ public class MainActivity extends FragmentActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	public void redirectLogin(View view){
-		Intent intent = new Intent(this, HomeActivity.class);
-		startActivity(intent);
 	}
 }
