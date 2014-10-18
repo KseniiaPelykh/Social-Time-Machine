@@ -1376,9 +1376,10 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f05002f;
-        public static final int action_settings=0x7f050064;
+        public static final int action_settings=0x7f050065;
         public static final int activity_chooser_view_content=0x7f050030;
         public static final int always=0x7f05000b;
+        public static final int authButton=0x7f050064;
         public static final int beginning=0x7f050011;
         public static final int bottom=0x7f05001f;
         public static final int box_count=0x7f05001e;
@@ -1641,6 +1642,7 @@ containing a value of this type.
          */
         public static final int AppBaseTheme=0x7f0b008e;
         /**  Application theme. 
+ <item name="android:windowBackground">@drawable/wallpaper</item> 
          */
         public static final int AppTheme=0x7f0b008f;
         /**  Mimic text appearance in select_dialog_item.xml 

@@ -37,8 +37,8 @@ public class MainFragment extends Fragment {
 	        ViewGroup container, 
 	        Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_main, container, false);
-		//LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
-		//authButton.setFragment(this);
+		LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
+		authButton.setFragment(this);
 	    return view;
 	}
 	
@@ -80,7 +80,6 @@ public class MainFragment extends Fragment {
 	private void onSessionStateChange(Session session, SessionState state, Exception exception) {
 	    if (state.isOpened()) {
 	        Log.i(TAG, "Logged in...");
-	        Intent intent = new Intent(getActivity(), HomeActivity.class);
 	    } else if (state.isClosed()) {
 	        Log.i(TAG, "Logged out...");
 	    }

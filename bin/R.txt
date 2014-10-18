@@ -361,9 +361,10 @@ int id action_context_bar 0x7f050028
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f05002f
-int id action_settings 0x7f050064
+int id action_settings 0x7f050065
 int id activity_chooser_view_content 0x7f050030
 int id always 0x7f05000b
+int id authButton 0x7f050064
 int id beginning 0x7f050011
 int id bottom 0x7f05001f
 int id box_count 0x7f05001e

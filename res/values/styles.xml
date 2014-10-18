@@ -15,6 +15,6 @@
     <!-- Application theme. -->
     
     <style name="AppTheme" parent="AppBaseTheme">
-  		<item name="android:windowBackground">@drawable/wallpaper</item> 
+  		<!-- <item name="android:windowBackground">@drawable/wallpaper</item> --> 
     </style> 
 </resources>
