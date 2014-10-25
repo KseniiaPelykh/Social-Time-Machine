@@ -8,7 +8,8 @@
         android:id="@+id/title_of_game"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType = "text"/>    
+        android:inputType = "text"
+        android:layout_weight="0"/>    
     <EditText 
         android:id="@+id/text_of_user"
         android:inputType="textMultiLine"
@@ -16,6 +17,31 @@
         android:minLines="6"
         android:maxLines="10"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"/>
+        android:layout_width="fill_parent"
+        android:layout_weight="0"/>
     
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFFFF"
+        android:text="@string/create" 
+        android:onClick="saveGame"
+        android:layout_weight="0"
+        android:background="@drawable/button_custom">
+    </Button>
+    
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">        
+    </ImageView>
+    
+    <Button
+        android:id="@+id/buttonLoadPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/load_image">        
+    </Button>
 </LinearLayout>

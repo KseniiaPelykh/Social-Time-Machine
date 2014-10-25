@@ -7,6 +7,7 @@
 	<string name="facebook_app_id">745825662121972</string>
 	<string name="new_button">New</string>
 	<string name="login_button">Login</string>
-	
+	<string name="create">Create</string>
+	<string name="load_image">Load Image</string>
 	<color name="orange">#FF8800</color>
 </resources>
