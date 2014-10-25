@@ -1,3 +1,5 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -14,6 +16,14 @@
    		android:id="@+id/authButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+   />
+   
+   <com.facebook.widget.ProfilePictureView
+   		android:id="@+id/profilePicture"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
    />
 
 </LinearLayout>
