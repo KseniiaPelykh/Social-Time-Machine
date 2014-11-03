@@ -1051,10 +1051,12 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f07000f;
+        public static final int abc_search_url_text_holo=0x7f070011;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int action_bar_background=0x7f07000e;
+        public static final int colortext=0x7f07000f;
         public static final int com_facebook_blue=0x7f070005;
         public static final int com_facebook_likeboxcountview_border_color=0x7f07000c;
         public static final int com_facebook_likeboxcountview_text_color=0x7f07000d;
@@ -1066,7 +1068,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_connected_shadow_color=0x7f070007;
         public static final int com_facebook_usersettingsfragment_connected_text_color=0x7f070006;
         public static final int com_facebook_usersettingsfragment_not_connected_text_color=0x7f070008;
-        public static final int orange=0x7f07000e;
+        public static final int selection_background=0x7f070010;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1335,7 +1337,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f02006c;
         public static final int com_facebook_loginbutton_silver=0x7f02006d;
         public static final int com_facebook_logo=0x7f02006e;
-        public static final int com_facebook_picker_default_separator_color=0x7f02008a;
+        public static final int com_facebook_picker_default_separator_color=0x7f02008b;
         public static final int com_facebook_picker_item_background=0x7f02006f;
         public static final int com_facebook_picker_list_focused=0x7f020070;
         public static final int com_facebook_picker_list_longpressed=0x7f020071;
@@ -1360,9 +1362,10 @@ containing a value of this type.
         public static final int com_facebook_top_background=0x7f020084;
         public static final int com_facebook_top_button=0x7f020085;
         public static final int com_facebook_usersettingsfragment_background_gradient=0x7f020086;
-        public static final int ic_launcher=0x7f020087;
-        public static final int wallpaper=0x7f020088;
-        public static final int wallpaper1=0x7f020089;
+        public static final int corners=0x7f020087;
+        public static final int ic_launcher=0x7f020088;
+        public static final int wallpaper=0x7f020089;
+        public static final int wallpaper1=0x7f02008a;
     }
     public static final class id {
         public static final int action_bar=0x7f050027;
@@ -1376,7 +1379,6 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f05002f;
-        public static final int action_settings=0x7f05006a;
         public static final int activity_chooser_view_content=0x7f050030;
         public static final int always=0x7f05000b;
         public static final int authButton=0x7f050067;
@@ -1433,6 +1435,7 @@ containing a value of this type.
         public static final int left=0x7f050023;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050034;
+        public static final int logout=0x7f05006a;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
@@ -1619,11 +1622,12 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_log_in_button=0x7f0a0017;
         public static final int com_facebook_usersettingsfragment_logged_in=0x7f0a0018;
         public static final int com_facebook_usersettingsfragment_not_logged_in=0x7f0a0019;
-        public static final int create=0x7f0a002f;
+        public static final int create=0x7f0a0030;
         public static final int facebook_app_id=0x7f0a002c;
         public static final int hello_world=0x7f0a002a;
-        public static final int load_image=0x7f0a0030;
+        public static final int load_image=0x7f0a0031;
         public static final int login_button=0x7f0a002e;
+        public static final int logout_button=0x7f0a002f;
         public static final int new_button=0x7f0a002d;
     }
     public static final class style {
@@ -1650,9 +1654,11 @@ containing a value of this type.
          */
         public static final int AppBaseTheme=0x7f0b008e;
         /**  Application theme. 
- <item name="android:windowBackground">@drawable/wallpaper</item> 
          */
         public static final int AppTheme=0x7f0b008f;
+        /**  ActionBar styles 
+         */
+        public static final int MyActionBar=0x7f0b0090;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;

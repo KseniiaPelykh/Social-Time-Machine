@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
+    android:background="@color/selection_background"
+    android:orientation="vertical"
+    android:gravity="center">
    
     <com.facebook.widget.ProfilePictureView
             android:id="@+id/profilePicture"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            facebook:preset_size="small" />
+            android:scaleType="centerCrop"
+            facebook:preset_size="normal" />
       
     <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="#333"
-            android:textSize="18sp" />
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colortext"
+            android:textSize="20sp" />
 
 </LinearLayout>
