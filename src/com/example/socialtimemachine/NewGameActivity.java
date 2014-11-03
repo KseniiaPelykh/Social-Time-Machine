@@ -47,21 +47,25 @@ public class NewGameActivity extends Activity {
 	public void saveGame(View view){
 		EditText titleOfGame = (EditText)findViewById(R.id.title_of_game);
 		EditText textOfUser = (EditText)findViewById(R.id.text_of_user);
-		
-		ParseObject newgame = new ParseObject("Game");
-		newgame.put("gameTitle", titleOfGame.getText().toString());
-		newgame.put("gameText", textOfUser.getText().toString());
-		
 		ImageView gameImage = (ImageView)findViewById(R.id.imgView);
-		Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
-	    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-	    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-		ParseFile file = new ParseFile("picturePath.png", stream.toByteArray());
-		newgame.put("gameImage", file);
-		newgame.saveInBackground();
 		
-		Intent intent = new Intent(this, HomeActivity.class);
-		startActivity(intent);		
+		if (!titleOfGame.getText().toString().matches("") &&
+				!textOfUser.getText().toString().matches("") &&
+				gameImage.getDrawable() != null) {
+			ParseObject newgame = new ParseObject("Game");
+			newgame.put("gameTitle", titleOfGame.getText().toString());
+			newgame.put("gameText", textOfUser.getText().toString());
+		
+			Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			ParseFile file = new ParseFile("picturePath.png", stream.toByteArray());
+			newgame.put("gameImage", file);
+			newgame.saveInBackground();
+		
+			Intent intent = new Intent(this, HomeActivity.class);
+			startActivity(intent);		
+		}
 	}
 		
 	@Override 

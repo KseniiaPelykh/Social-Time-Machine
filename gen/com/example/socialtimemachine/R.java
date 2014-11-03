@@ -1629,6 +1629,8 @@ containing a value of this type.
         public static final int login_button=0x7f0a002e;
         public static final int logout_button=0x7f0a002f;
         public static final int new_button=0x7f0a002d;
+        public static final int new_game_description=0x7f0a0033;
+        public static final int new_game_title=0x7f0a0032;
     }
     public static final class style {
         /** 

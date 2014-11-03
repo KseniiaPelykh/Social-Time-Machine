@@ -10,6 +10,8 @@
 	<string name="logout_button">Logout</string>
 	<string name="create">Create</string>
 	<string name="load_image">Load Image</string>
+	<string name="new_game_title">Title: </string>
+	<string name="new_game_description">Description:</string>
 	<color name="action_bar_background">#F8433A</color>
 	<color name="colortext">#FFFFFF</color>
 	<color name="selection_background">#EDD8BB</color>

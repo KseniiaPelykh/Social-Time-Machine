@@ -557,6 +557,8 @@ int string load_image 0x7f0a0031
 int string login_button 0x7f0a002e
 int string logout_button 0x7f0a002f
 int string new_button 0x7f0a002d
+int string new_game_description 0x7f0a0033
+int string new_game_title 0x7f0a0032
 int style AppBaseTheme 0x7f0b008e
 int style AppTheme 0x7f0b008f
 int style MyActionBar 0x7f0b0090
