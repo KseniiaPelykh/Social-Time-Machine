@@ -1435,13 +1435,13 @@ containing a value of this type.
         public static final int left=0x7f050023;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050034;
-        public static final int logout=0x7f05006a;
+        public static final int logout=0x7f05006b;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int picker_subtitle=0x7f05005c;
-        public static final int profilePicture=0x7f050068;
+        public static final int profilePicture=0x7f050069;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05003a;
@@ -1466,6 +1466,7 @@ containing a value of this type.
         public static final int standard=0x7f05001c;
         public static final int submit_area=0x7f050044;
         public static final int tabMode=0x7f050002;
+        public static final int text=0x7f050068;
         public static final int text_of_user=0x7f05004a;
         public static final int title=0x7f050036;
         public static final int title_of_game=0x7f050049;
@@ -1473,7 +1474,7 @@ containing a value of this type.
         public static final int top_action_bar=0x7f05002b;
         public static final int up=0x7f05002c;
         public static final int useLogo=0x7f050003;
-        public static final int userName=0x7f050069;
+        public static final int userName=0x7f05006a;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1545,8 +1546,9 @@ containing a value of this type.
         public static final int com_facebook_tooltip_bubble=0x7f030028;
         public static final int com_facebook_usersettingsfragment=0x7f030029;
         public static final int fragment_main=0x7f03002a;
-        public static final int selection=0x7f03002b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002c;
+        public static final int listview_item=0x7f03002b;
+        public static final int selection=0x7f03002c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002d;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

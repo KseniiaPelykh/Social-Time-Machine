@@ -17,13 +17,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
    />
-   
-   <com.facebook.widget.ProfilePictureView
-   		android:id="@+id/profilePicture"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-   />
 
 </LinearLayout>

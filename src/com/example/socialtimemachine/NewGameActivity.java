@@ -12,12 +12,15 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.model.GraphUser;
 import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -25,6 +28,8 @@ import com.parse.ParseObject;
 public class NewGameActivity extends Activity {
 	
 	public static final int RESULT_LOAD_IMAGE = 1;
+	private static final String EMPTY_STRING = "";
+	private String userId = "";
 	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -48,14 +53,15 @@ public class NewGameActivity extends Activity {
 		EditText titleOfGame = (EditText)findViewById(R.id.title_of_game);
 		EditText textOfUser = (EditText)findViewById(R.id.text_of_user);
 		ImageView gameImage = (ImageView)findViewById(R.id.imgView);
+		setUserId();		
 		
 		if (!titleOfGame.getText().toString().matches("") &&
 				!textOfUser.getText().toString().matches("") &&
-				gameImage.getDrawable() != null) {
+				gameImage.getDrawable() != null && !userId.matches("")) {
 			ParseObject newgame = new ParseObject("Game");
 			newgame.put("gameTitle", titleOfGame.getText().toString());
 			newgame.put("gameText", textOfUser.getText().toString());
-		
+			newgame.put("gameUser", userId);
 			Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -87,5 +93,22 @@ public class NewGameActivity extends Activity {
 			ImageView gameImage = (ImageView) findViewById(R.id.imgView);
 			gameImage.setImageBitmap(bitmap);			
 		}
+	}
+	
+	private void setUserId(){
+		Session session = Session.getActiveSession();		
+		
+		if (session != null){
+			Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {				
+				
+				@Override 
+				public void onCompleted(GraphUser user, Response response){
+					if (user != null){
+						userId = user.getId();						
+					}
+				}
+			});
+			Request.executeBatchAsync(request);
+		}		
 	}
 }

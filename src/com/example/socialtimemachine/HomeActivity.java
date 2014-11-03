@@ -1,48 +1,43 @@
 package com.example.socialtimemachine;
 
+import java.util.List;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
+import com.facebook.model.GraphUser;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 public class HomeActivity extends FragmentActivity {	
 	
-	private SelectionFragment selectionFragment;
+	ListView listView;
+	List<ParseObject> ob;
+	ProgressDialog mProgressDialog;
+	ArrayAdapter<String> adapter;
 	
+	private SelectionFragment selectionFragment;
+	private String userId;
+		
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		setUserId();
 		
 		Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");
-		
-		/*final ActionBar actionBar = getActionBar();		
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);*/
-		
-		ParseObject testObject = new ParseObject("TestObject");
-		testObject.put("foo", "bar");
-		testObject.saveInBackground();
-		/*ActionBar.TabListener tabListener = new ActionBar.TabListener(){			
-			public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft){				
-			}
-			
-			public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft){
-				
-			}
-			
-			public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft){
-				
-			}			
-		};
-		
-		actionBar.addTab(actionBar.newTab().setText("OLD").setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText("CURRENT").setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText("CREATE NEW").setTabListener(tabListener)); */
 				
 		setContentView(R.layout.activity_home);
 		if (savedInstanceState == null) {
@@ -58,7 +53,9 @@ public class HomeActivity extends FragmentActivity {
 			// Or set the fragment from restored state info
 			selectionFragment = (SelectionFragment) getSupportFragmentManager()
 					.findFragmentById(R.id.selectionContainer);
-		}		
+		}
+		
+		//new RemoteDataTask().execute();
 	}
 	
 	@Override
@@ -95,4 +92,63 @@ public class HomeActivity extends FragmentActivity {
 		Intent intent = new Intent(this, NewGameActivity.class);
 		startActivity(intent);
 	}	
+	
+	private void setUserId(){
+		Session session = Session.getActiveSession();		
+		
+		if (session != null){
+			Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {				
+				
+				@Override 
+				public void onCompleted(GraphUser user, Response response){
+					if (user != null){
+						userId = user.getId();						
+					}
+				}
+			});
+			Request.executeBatchAsync(request);
+		}		
+	}
+
+	private class RemoteDataTask extends AsyncTask<Void, Void, Void>{
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+			
+			mProgressDialog = new ProgressDialog(HomeActivity.this);
+			
+			mProgressDialog.setTitle("History");
+			mProgressDialog.setMessage("Loading...");
+			mProgressDialog.setIndeterminate(false);
+			mProgressDialog.show();
+		}
+		
+		@Override
+		protected Void doInBackground(Void... params){
+			ParseQuery<ParseObject> query = ParseQuery.getQuery("Game");
+			query.whereEqualTo("gameUser", userId);
+			try {
+				ob = query.find();
+			}
+			catch (ParseException e){
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+		
+		@Override 
+		protected void onPostExecute(Void result){
+			/*listView = (ListView)findViewById(R.id.historyview);
+			adapter = new ArrayAdapter<String>(HomeActivity.this,
+					R.layout.listview_item);
+			
+			for (ParseObject item : ob){
+				adapter.add((String) item.get("gameTitle"));
+			}
+			
+			listView.setAdapter(adapter);
+			mProgressDialog.dismiss();*/
+		}
+	}
 }
