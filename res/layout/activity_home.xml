@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-    
+        
 	<FrameLayout
     	android:id="@+id/selectionContainer"
       	android:layout_width="match_parent"
@@ -20,11 +20,13 @@
         android:onClick="newGame"
         android:background="@drawable/button_custom">
     </Button>   
-     
-    <ListView
-        android:id="@+id/historyview"
+    
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </ListView>   
+        android:layout_height="wrap_content"
+        android:text="load_history"
+        android:background="@drawable/button_custom"
+        android:onClick="loadHistory">
+    </Button> 
         
 </LinearLayout>

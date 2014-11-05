@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/text"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="5sp"
-    android:textSize="25sp" >
+    android:layout_height="wrap_content" >
  
-</TextView>
+    <com.parse.ParseImageView
+        android:id="@+id/icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip" />
+ 
+    <TextView
+        android:id="@+id/gameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon"
+        android:layout_toRightOf="@id/icon"
+        android:textColor="#FF0000" />
+ 
+</RelativeLayout>

@@ -1,8 +1,8 @@
 package com.example.socialtimemachine;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,10 +27,8 @@ import com.parse.ParseQuery;
 
 public class HomeActivity extends FragmentActivity {	
 	
-	ListView listView;
+	ArrayList<String> gamesTitleList;
 	List<ParseObject> ob;
-	ProgressDialog mProgressDialog;
-	ArrayAdapter<String> adapter;
 	
 	private SelectionFragment selectionFragment;
 	private String userId;
@@ -37,9 +37,9 @@ public class HomeActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setUserId();
 		
-		Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");
-				
-		setContentView(R.layout.activity_home);
+		Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");				
+		setContentView(R.layout.activity_home);	
+		
 		if (savedInstanceState == null) {
 			// Add the fragment on initial activity setup
 			
@@ -54,8 +54,6 @@ public class HomeActivity extends FragmentActivity {
 			selectionFragment = (SelectionFragment) getSupportFragmentManager()
 					.findFragmentById(R.id.selectionContainer);
 		}
-		
-		//new RemoteDataTask().execute();
 	}
 	
 	@Override
@@ -93,6 +91,11 @@ public class HomeActivity extends FragmentActivity {
 		startActivity(intent);
 	}	
 	
+	public void loadHistory(View view){
+		Intent intent = new Intent(this, LoadHistory.class);
+		startActivity(intent);
+	}	
+	
 	private void setUserId(){
 		Session session = Session.getActiveSession();		
 		
@@ -108,47 +111,5 @@ public class HomeActivity extends FragmentActivity {
 			});
 			Request.executeBatchAsync(request);
 		}		
-	}
-
-	private class RemoteDataTask extends AsyncTask<Void, Void, Void>{
-		@Override
-		protected void onPreExecute(){
-			super.onPreExecute();
-			
-			mProgressDialog = new ProgressDialog(HomeActivity.this);
-			
-			mProgressDialog.setTitle("History");
-			mProgressDialog.setMessage("Loading...");
-			mProgressDialog.setIndeterminate(false);
-			mProgressDialog.show();
-		}
-		
-		@Override
-		protected Void doInBackground(Void... params){
-			ParseQuery<ParseObject> query = ParseQuery.getQuery("Game");
-			query.whereEqualTo("gameUser", userId);
-			try {
-				ob = query.find();
-			}
-			catch (ParseException e){
-				e.printStackTrace();
-			}
-			
-			return null;
-		}
-		
-		@Override 
-		protected void onPostExecute(Void result){
-			/*listView = (ListView)findViewById(R.id.historyview);
-			adapter = new ArrayAdapter<String>(HomeActivity.this,
-					R.layout.listview_item);
-			
-			for (ParseObject item : ob){
-				adapter.add((String) item.get("gameTitle"));
-			}
-			
-			listView.setAdapter(adapter);
-			mProgressDialog.dismiss();*/
-		}
 	}
 }
