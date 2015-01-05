@@ -1,5 +1,7 @@
 package com.example.socialtimemachine;
 
+import java.util.Arrays;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,6 +41,7 @@ public class MainFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_main, container, false);
 		LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
 		authButton.setFragment(this);
+		authButton.setReadPermissions(Arrays.asList("user_friends"));
 	    return view;
 	}
 	

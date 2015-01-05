@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
+import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.parse.Parse;
 import com.parse.ParseFile;
@@ -28,9 +29,11 @@ import com.parse.ParseObject;
 public class NewGameActivity extends Activity {
 	
 	public static final int RESULT_LOAD_IMAGE = 1;
+	public static final int REAUTH_ACTIVITY_CODE = 2;
 	private static final String EMPTY_STRING = "";
 	private String userId = "";
-	
+	private UiLifecycleHelper uiHelper;
+		
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
@@ -73,7 +76,11 @@ public class NewGameActivity extends Activity {
 			startActivity(intent);		
 		}
 	}
-		
+	
+	public void showFriends(View view){
+		startPickerActivity(PickerActivity.FRIEND_PICKER, REAUTH_ACTIVITY_CODE);
+	}
+				
 	@Override 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
@@ -93,6 +100,12 @@ public class NewGameActivity extends Activity {
 			ImageView gameImage = (ImageView) findViewById(R.id.imgView);
 			gameImage.setImageBitmap(bitmap);			
 		}
+		
+		if (requestCode == REAUTH_ACTIVITY_CODE) {
+		      uiHelper.onActivityResult(requestCode, resultCode, data);
+		    } else if (resultCode == Activity.RESULT_OK) {
+		        // Do nothing for now
+		    }
 	}
 	
 	private void setUserId(){
@@ -110,5 +123,12 @@ public class NewGameActivity extends Activity {
 			});
 			Request.executeBatchAsync(request);
 		}		
+	}
+	
+	private void startPickerActivity(Uri data, int requestCode){
+		Intent intent = new Intent();
+		intent.setData(data);
+		intent.setClass(this, PickerActivity.class);
+		startActivityForResult(intent, requestCode);
 	}
 }

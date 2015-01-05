@@ -12,7 +12,11 @@
 	<string name="load_image">Load Image</string>
 	<string name="new_game_title">Title: </string>
 	<string name="new_game_description">Description:</string>
-	<color name="action_bar_background">#000000</color>
+	<string name="with_whom">With whom?</string>
+	<string name="error_dialog_title">Error</string>
+	<string name="error_dialog_button_text">Ok</string>
+	<color name="main_activity_background">#42A5F5</color>	
+	<color name="action_bar_background">#1565C0</color>
 	<color name="colortext">#FFFFFF</color>
 	<color name="selection_background">#F2EEEF</color>
 </resources>

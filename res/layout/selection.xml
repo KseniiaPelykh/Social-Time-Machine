@@ -14,8 +14,10 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:scaleType="centerCrop"
-            facebook:preset_size="normal"/>
-      
+            facebook:preset_size="normal"
+   			android:background="@drawable/corners"
+   />
+      	
     <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
