@@ -78,7 +78,7 @@ public class SlidingTabsBasicFragment extends Fragment {
          */
         @Override
         public int getCount() {
-            return 10;
+            return 3;
         }
 
         /**
@@ -99,7 +99,16 @@ public class SlidingTabsBasicFragment extends Fragment {
          */
         @Override
         public CharSequence getPageTitle(int position) {
-            return "Item " + (position + 1);
+            switch (position){
+                case 0:
+                    return "My History";
+                case 1:
+                    return "Friend's History";
+                case 2:
+                    return "All History";
+                default:
+                    return "No Title";
+            }
         }
 
         /**
