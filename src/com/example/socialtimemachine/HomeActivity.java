@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,7 +31,7 @@ public class HomeActivity extends FragmentActivity {
 	
 	ArrayList<String> gamesTitleList;
 	List<ParseObject> ob;
-	
+
 	private SelectionFragment selectionFragment;
 	private String userId;
 		
@@ -39,16 +41,26 @@ public class HomeActivity extends FragmentActivity {
 		
 		Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");				
 		setContentView(R.layout.activity_home);	
-		
+
+        // ViewPager and its adapters use support library
+        // fragments, so use getSupportFragmentManager.
+
 		if (savedInstanceState == null) {
 			// Add the fragment on initial activity setup
-			
-			selectionFragment = new SelectionFragment();
+           	/*selectionFragment = new SelectionFragment();
 			getSupportFragmentManager()
 			.beginTransaction()
 			.add(R.id.selectionContainer, selectionFragment)
-			.commit();
-		}
+            .commit();
+*/
+            selectionFragment = new SelectionFragment();
+            SlidingTabsBasicFragment tabsFragment = new SlidingTabsBasicFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.selectionContainer, selectionFragment)
+                    .add(R.id.basic_tabs_content_fragment, tabsFragment)
+                    .commit();
+         }
 		else {
 			// Or set the fragment from restored state info
 			selectionFragment = (SelectionFragment) getSupportFragmentManager()

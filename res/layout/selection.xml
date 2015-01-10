@@ -15,7 +15,6 @@
             android:layout_width="wrap_content"
             android:scaleType="centerCrop"
             facebook:preset_size="normal"
-   			android:background="@drawable/corners"
    />
       	
     <TextView

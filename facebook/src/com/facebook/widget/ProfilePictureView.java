@@ -20,6 +20,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -27,10 +33,15 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
 import com.facebook.FacebookException;
 import com.facebook.LoggingBehavior;
 import com.facebook.android.R;
-import com.facebook.internal.*;
+import com.facebook.internal.ImageDownloader;
+import com.facebook.internal.ImageRequest;
+import com.facebook.internal.ImageResponse;
+import com.facebook.internal.Logger;
+import com.facebook.internal.Utility;
 
 import java.net.URISyntaxException;
 
@@ -419,7 +430,7 @@ public class ProfilePictureView extends FrameLayout {
     private void setImageBitmap(Bitmap imageBitmap) {
         if (image != null && imageBitmap != null) {
             imageContents = imageBitmap; // Hold for save-restore cycles
-            image.setImageBitmap(imageBitmap);
+            image.setImageBitmap(ProfilePictureView.getRoundedBitmap(imageBitmap));
         }
     }
 
@@ -534,5 +545,28 @@ public class ProfilePictureView extends FrameLayout {
         }
 
         return getResources().getDimensionPixelSize(dimensionId);
+    }
+
+    public static Bitmap getRoundedBitmap(Bitmap bitmap) {
+        //Returns a immutable bitmap with the specified width and height,
+        // with each pixel value set to the corresponding value in the colors array.
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+                .getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawOval(rectF, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
     }
 }

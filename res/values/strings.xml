@@ -4,19 +4,21 @@
     <string name="app_name">Social Time Machine</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-	<string name="facebook_app_id">745825662121972</string>
-	<string name="new_button">New</string>
-	<string name="login_button">Login</string>
-	<string name="logout_button">Logout</string>
-	<string name="create">Create</string>
-	<string name="load_image">Load Image</string>
-	<string name="new_game_title">Title: </string>
-	<string name="new_game_description">Description:</string>
-	<string name="with_whom">With whom?</string>
-	<string name="error_dialog_title">Error</string>
-	<string name="error_dialog_button_text">Ok</string>
-	<color name="main_activity_background">#42A5F5</color>	
-	<color name="action_bar_background">#1565C0</color>
-	<color name="colortext">#FFFFFF</color>
-	<color name="selection_background">#F2EEEF</color>
+    <string name="facebook_app_id">745825662121972</string>
+    <string name="new_button">New</string>
+    <string name="login_button">Login</string>
+    <string name="logout_button">Logout</string>
+    <string name="create">Create</string>
+    <string name="load_image">Load Image</string>
+    <string name="new_game_title">Title: </string>
+    <string name="new_game_description">Description:</string>
+    <string name="with_whom">With whom?</string>
+    <string name="error_dialog_title">Error</string>
+    <string name="error_dialog_button_text">Ok</string>
+
+    <color name="main_activity_background">#42A5F5</color>
+    <color name="selection_background">#F2EEEF</color>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
