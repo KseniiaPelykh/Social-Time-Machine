@@ -23,9 +23,13 @@
     <eat-comment/>
     <color name="primary">#3F51B5</color>
     <color name="primary_dark">#303F9F</color>
+    <color name="secondary_text">#8C000000</color>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/strings.xml -->
     <eat-comment/>
     <color name="selection_background">#F2EEEF</color>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="white">#FFFFFF</color>
     <declare-styleable name="com_facebook_friend_picker_fragment"><attr format="boolean" name="multi_select"/></declare-styleable>
     <declare-styleable name="com_facebook_like_view"><attr format="color" name="foreground_color"/><attr format="string" name="object_id"/><attr name="style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
     <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="confirm_logout"/><attr format="boolean" name="fetch_user_info"/><attr format="string" name="login_text"/><attr format="string" name="logout_text"/></declare-styleable>
@@ -36,6 +40,7 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="add_button_margin">16dp</dimen>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.facebook.android/facebook/3.21.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
@@ -66,6 +71,13 @@
     <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
     <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64dp</dimen>
     <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="diameter">48dp</dimen>
+    <dimen name="elevation_high">4dp</dimen>
+    <dimen name="elevation_low">1dp</dimen>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.facebook.android/facebook/3.21.1/res/values/values.xml -->
+    <eat-comment/>
     <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/strings.xml -->
     <eat-comment/>
@@ -119,12 +131,17 @@
     <string name="with_whom">With whom?</string>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AppBaseTheme" parent="android:Theme.Material">
+    <style name="AppBaseTheme" parent="android:Theme.Material.Light">
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+    <style name="AppButton" parent="android:style/Widget.Material.Button">
+        <item name="android:background">@drawable/raised_button_backgroud</item>
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
+
     </style>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.facebook.android/facebook/3.21.1/res/values/values.xml -->
     <eat-comment/>

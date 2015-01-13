@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
+import android.graphics.Outline;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.facebook.Request;
@@ -46,25 +48,27 @@ public class HomeActivity extends FragmentActivity {
         // fragments, so use getSupportFragmentManager.
 
 		if (savedInstanceState == null) {
-			// Add the fragment on initial activity setup
-           	/*selectionFragment = new SelectionFragment();
-			getSupportFragmentManager()
-			.beginTransaction()
-			.add(R.id.selectionContainer, selectionFragment)
-            .commit();
-*/
+            // Add fragments to activity setup
             selectionFragment = new SelectionFragment();
             SlidingTabsBasicFragment tabsFragment = new SlidingTabsBasicFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.selectionContainer, selectionFragment)
+                    .add(R.id.selection_container, selectionFragment)
                     .add(R.id.basic_tabs_content_fragment, tabsFragment)
                     .commit();
+
+            View addButton = this.findViewById(R.id.add_new_game_button);
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    newGame(view);
+                }
+            });
          }
 		else {
 			// Or set the fragment from restored state info
 			selectionFragment = (SelectionFragment) getSupportFragmentManager()
-					.findFragmentById(R.id.selectionContainer);
+					.findFragmentById(R.id.selection_container);
 		}
 	}
 	

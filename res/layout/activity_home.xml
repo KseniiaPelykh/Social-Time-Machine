@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@color/white">
     <FrameLayout
-        android:id="@+id/selectionContainer"
+        android:id="@+id/selection_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -16,4 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="10px" />
 
+    <ImageButton
+        android:id="@+id/add_new_game_button"
+        android:layout_width="@dimen/diameter"
+        android:layout_height="@dimen/diameter"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="@dimen/add_button_margin"
+        android:layout_marginEnd="@dimen/add_button_margin"
+        android:tint="@android:color/white"
+        android:background="@drawable/oval_ripple"
+        android:elevation="@dimen/elevation_low"
+        android:src="@android:drawable/ic_input_add"/>
 </LinearLayout>

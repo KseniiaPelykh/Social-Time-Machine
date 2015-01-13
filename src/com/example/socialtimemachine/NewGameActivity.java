@@ -40,7 +40,7 @@ public class NewGameActivity extends Activity {
 		Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");
 		setContentView(R.layout.activity_newgame);
 		
-		Button buttonLoadImage = (Button) findViewById(R.id.buttonLoadPicture);
+		/*Button buttonLoadImage = (Button) findViewById(R.id.buttonLoadPicture);
 		buttonLoadImage.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -49,7 +49,7 @@ public class NewGameActivity extends Activity {
 				intent.setType("image/*");
 				startActivityForResult(intent, RESULT_LOAD_IMAGE);
 			}
-		});		
+		});		*/
 	}
 	
 	public void saveGame(View view){
