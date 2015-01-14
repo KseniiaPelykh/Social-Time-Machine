@@ -2,39 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Ksu\workspace\SocialTimeMachine\libs\Parse-1.5.1.jar"
+        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c">
-        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\Parse-1.5.1-5422fe0f08294ac570ce498da6614664572dd88f.jar" />
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-15d797af2d1d9ea478a48d050990f652460a62a3.jar" />
     </item>
     <item
-        jar="C:\Users\Ksu\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-c7d8ebbe021e01b70506ee842244ca7de71c4e8e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-7f5c0bc2b4e0170951f3daeb011d619436da495e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.facebook.android\facebook\3.21.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3a5e7ca4445e8aba6598acd8b6b36f26d92f4a67">
-        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-cf358141f2656e808e65028c30079fa72f7b7c76.jar" />
-    </item>
-    <item
-        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-0a7951d07bbdf79fd6c11b0f426e27bbeba69212.jar" />
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-3474364cd49afd755103f669fddccb23acdc3f2d.jar" />
     </item>
     <item
         jar="C:\Users\Ksu\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.2\91c20388c9a45f62b5ed8fe0502bb76ff6251fc7\bolts-android-1.1.2.jar"
@@ -42,6 +21,48 @@
         revision="21.1.2"
         sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
         <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-8c8872fe915381dfeaee864091d590308b5e697f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ksu\workspace\SocialTimeMachine\libs\Parse-1.5.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\Parse-1.5.1-5422fe0f08294ac570ce498da6614664572dd88f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ksu\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\library-2.4.0-1f7a359365b90a554cdc816299616db5783b0b75.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.rengwuxian.materialedittext\library\1.8.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e0c1b2f2f402793e3f9cfeabfeec52429c9a88d3">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-4730252a6a6a74f8c31dc2cee625bee0dbd1df4e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.facebook.android\facebook\3.21.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="483dc6b31a76620bc0141565ea581c003766984c">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-cf358141f2656e808e65028c30079fa72f7b7c76.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ksu\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b3bc5982775d0ad8fb6d69b2e9ba852436b25cde.jar" />
+    </item>
+    <item
+        jar="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-dd3643130849543fa4cf77003fafbd69ff3b9e94.jar" />
     </item>
 
 </items>

@@ -1,7 +1,10 @@
 C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\classes\debug
-C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-c7d8ebbe021e01b70506ee842244ca7de71c4e8e.jar
+C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-b3bc5982775d0ad8fb6d69b2e9ba852436b25cde.jar
+C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-4730252a6a6a74f8c31dc2cee625bee0dbd1df4e.jar
 C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-8c8872fe915381dfeaee864091d590308b5e697f.jar
-C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-7f5c0bc2b4e0170951f3daeb011d619436da495e.jar
+C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\library-2.4.0-1f7a359365b90a554cdc816299616db5783b0b75.jar
+C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-dd3643130849543fa4cf77003fafbd69ff3b9e94.jar
+C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-3474364cd49afd755103f669fddccb23acdc3f2d.jar
 C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-cf358141f2656e808e65028c30079fa72f7b7c76.jar
-C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-0a7951d07bbdf79fd6c11b0f426e27bbeba69212.jar
 C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\Parse-1.5.1-5422fe0f08294ac570ce498da6614664572dd88f.jar
+C:\Users\Ksu\workspace\SocialTimeMachine\build\intermediates\pre-dexed\debug\classes-15d797af2d1d9ea478a48d050990f652460a62a3.jar

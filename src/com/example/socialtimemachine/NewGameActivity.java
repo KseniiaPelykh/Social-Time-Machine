@@ -53,8 +53,8 @@ public class NewGameActivity extends Activity {
 	}
 	
 	public void saveGame(View view){
-		EditText titleOfGame = (EditText)findViewById(R.id.title_of_game);
-		EditText textOfUser = (EditText)findViewById(R.id.text_of_user);
+		EditText titleOfGame = (EditText)findViewById(R.id.game_title);
+		EditText textOfUser = (EditText)findViewById(R.id.game_description);
 		ImageView gameImage = (ImageView)findViewById(R.id.imgView);
 		setUserId();		
 		

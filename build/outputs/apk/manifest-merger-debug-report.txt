@@ -14,7 +14,10 @@ ADDED from AndroidManifest.xml:2:1
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
 MERGED from com.facebook.android:facebook:3.21.1:20:5
-MERGED from com.android.support:support-v4:20.0.0:16:5
+MERGED from com.android.support:support-v4:21.0.3:15:5
+MERGED from com.rengwuxian.materialedittext:library:1.8.1:6:5
+MERGED from com.android.support:appcompat-v7:21.0.3:15:5
+MERGED from com.android.support:support-v4:21.0.3:15:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:9:9
 	android:minSdkVersion
@@ -30,7 +33,9 @@ ADDED from AndroidManifest.xml:12:5
 application
 ADDED from AndroidManifest.xml:14:5
 MERGED from com.facebook.android:facebook:3.21.1:24:5
-MERGED from com.android.support:support-v4:20.0.0:17:5
+MERGED from com.android.support:support-v4:21.0.3:16:5
+MERGED from com.android.support:appcompat-v7:21.0.3:16:5
+MERGED from com.android.support:support-v4:21.0.3:16:5
 	android:label
 		ADDED from AndroidManifest.xml:17:9
 	android:allowBackup
