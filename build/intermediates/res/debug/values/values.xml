@@ -309,6 +309,7 @@
     <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/strings.xml -->
     <eat-comment/>
+    <string name="end_time">End Time</string>
     <string name="error_dialog_button_text">Ok</string>
     <string name="error_dialog_title">Error</string>
     <string name="facebook_app_id">745825662121972</string>
@@ -321,6 +322,7 @@
     <string name="new_game_description">Description</string>
     <string name="new_game_title">Title </string>
     <string name="start">Start</string>
+    <string name="start_time">Start Time</string>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Material.Light">
@@ -333,7 +335,6 @@
         <item name="android:background">@drawable/raised_button_backgroud</item>
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-
     </style>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>

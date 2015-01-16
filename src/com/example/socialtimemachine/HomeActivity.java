@@ -64,7 +64,7 @@ public class HomeActivity extends FragmentActivity {
                     newGame(view);
                 }
             });
-         }
+        }
 		else {
 			// Or set the fragment from restored state info
 			selectionFragment = (SelectionFragment) getSupportFragmentManager()

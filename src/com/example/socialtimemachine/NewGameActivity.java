@@ -2,8 +2,13 @@ package com.example.socialtimemachine;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -12,10 +17,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -26,7 +35,49 @@ import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 
-public class NewGameActivity extends Activity {
+public class NewGameActivity extends FragmentActivity {
+
+    public static class TimePickerFragment extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            // Use the current time as the default values for the picker
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            // Create a nea instance of TimePickerDialog and return it
+            return  new TimePickerDialog(getActivity(), this, hour, minute, true);
+        }
+
+        public void  onTimeSet(TimePicker view, int hourOfDay, int minute){
+            TextView startTimeView = (TextView) getActivity().findViewById(R.id.start_time);
+            startTimeView.setText(
+                    new StringBuilder()
+                        .append(hourOfDay)
+                        .append(":")
+                        .append(minute));
+        }
+    }
+
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener{
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day){
+            // Do something with the date chosen by user
+        }
+    }
 	
 	public static final int RESULT_LOAD_IMAGE = 1;
 	public static final int REAUTH_ACTIVITY_CODE = 2;
@@ -50,6 +101,14 @@ public class NewGameActivity extends Activity {
 				startActivityForResult(intent, RESULT_LOAD_IMAGE);
 			}
 		});		*/
+
+        TextView startTimeView = (TextView) findViewById(R.id.start_time);
+        startTimeView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View timeView){
+                showTimePickerDialog(timeView);
+            }
+        });
 	}
 	
 	public void saveGame(View view){
@@ -80,7 +139,17 @@ public class NewGameActivity extends Activity {
 	public void showFriends(View view){
 		startPickerActivity(PickerActivity.FRIEND_PICKER, REAUTH_ACTIVITY_CODE);
 	}
-				
+
+    public void showTimePickerDialog(View v){
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(this.getFragmentManager(), "timePicker");
+    }
+
+    public void showDatePickerDialog(View v){
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(this.getFragmentManager(), "datePicker");
+    }
+
 	@Override 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
