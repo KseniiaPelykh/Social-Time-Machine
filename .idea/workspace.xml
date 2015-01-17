@@ -23,10 +23,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java" afterPath="$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/r/debug/com/example/socialtimemachine/R.java" afterPath="$PROJECT_DIR$/build/generated/source/r/debug/com/example/socialtimemachine/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/r/debug/com/facebook/android/R.java" afterPath="$PROJECT_DIR$/build/generated/source/r/debug/com/facebook/android/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_newgame.xml" afterPath="$PROJECT_DIR$/res/layout/activity_newgame.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SocialTimeMachine.iws" />
@@ -71,33 +67,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewGameActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NewGameActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1693" max-vertical-offset="3196">
-              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.6781116" vertical-offset="2295" max-vertical-offset="3179">
+              <caret line="248" column="0" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="class#StartTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
                 <element signature="method#onCreateDialog#0;class#StartTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
                 <element signature="class#EndTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
                 <element signature="method#updateTime#0;class#NewGameActivity#0" expanded="false" />
+                <element signature="class#StartDatePickerFragment#0;class#NewGameActivity#0" expanded="false" />
+                <element signature="class#EndDatePickerFragment#0;class#NewGameActivity#0" expanded="false" />
                 <element signature="method#updateDate#0;class#NewGameActivity#0" expanded="false" />
-                <element signature="e#6461#6618#0" expanded="true" />
-                <element signature="e#6607#6608#0" expanded="true" />
-                <element signature="e#7023#7179#0" expanded="true" />
-                <element signature="e#7168#7169#0" expanded="true" />
+                <element signature="method#onCreate#0;class#NewGameActivity#0" expanded="false" />
+                <element signature="e#6606#6763#0" expanded="true" />
+                <element signature="e#6752#6753#0" expanded="true" />
+                <element signature="e#7168#7324#0" expanded="true" />
+                <element signature="e#7313#7314#0" expanded="true" />
                 <element signature="method#showTimePickerDialog#0;class#NewGameActivity#0" expanded="false" />
                 <element signature="method#showDatePickerDialog#0;class#NewGameActivity#0" expanded="false" />
-                <element signature="method#saveGame#0;class#NewGameActivity#0" expanded="false" />
+                <element signature="e#11948#12146#0" expanded="true" />
+                <element signature="e#12140#12141#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61678004" vertical-offset="51" max-vertical-offset="510">
+            <state vertical-scroll-proportion="-12.92" vertical-offset="0" max-vertical-offset="510">
               <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
               <folding />
             </state>
@@ -1145,9 +1146,9 @@
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/src/com/example/socialtimemachine/picker/TimePickerFragment.java" />
         <option value="$PROJECT_DIR$/src/com/example/socialtimemachine/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_newgame.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java" />
       </list>
     </option>
   </component>
@@ -1508,6 +1509,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24583964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1948,27 +1950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1642" max-vertical-offset="3196">
-          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding>
-            <element signature="class#StartTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="method#onCreateDialog#0;class#StartTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="class#EndTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="method#updateTime#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="method#updateDate#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="e#6461#6618#0" expanded="true" />
-            <element signature="e#6607#6608#0" expanded="true" />
-            <element signature="e#7023#7179#0" expanded="true" />
-            <element signature="e#7168#7169#0" expanded="true" />
-            <element signature="method#showTimePickerDialog#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="method#showDatePickerDialog#0;class#NewGameActivity#0" expanded="false" />
-            <element signature="method#saveGame#0;class#NewGameActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_newgame.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.555555" vertical-offset="542" max-vertical-offset="1751">
@@ -1990,9 +1971,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61678004" vertical-offset="51" max-vertical-offset="510">
+        <state vertical-scroll-proportion="-12.92" vertical-offset="0" max-vertical-offset="510">
           <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6781116" vertical-offset="2295" max-vertical-offset="3179">
+          <caret line="248" column="0" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#StartTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="method#onCreateDialog#0;class#StartTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="class#EndTimePickerFragment#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="method#updateTime#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="class#StartDatePickerFragment#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="class#EndDatePickerFragment#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="method#updateDate#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="e#6606#6763#0" expanded="true" />
+            <element signature="e#6752#6753#0" expanded="true" />
+            <element signature="e#7168#7324#0" expanded="true" />
+            <element signature="e#7313#7314#0" expanded="true" />
+            <element signature="method#showTimePickerDialog#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="method#showDatePickerDialog#0;class#NewGameActivity#0" expanded="false" />
+            <element signature="e#11948#12146#0" expanded="true" />
+            <element signature="e#12140#12141#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
