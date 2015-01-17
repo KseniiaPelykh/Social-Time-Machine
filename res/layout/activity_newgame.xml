@@ -31,11 +31,22 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            android:layout_margin="20dp" />
+
+        <TextView
+            android:id="@+id/start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"/>
+
+        <TextView
             android:id="@+id/start_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp"/>
-
+            android:layout_margin="20dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -44,13 +55,24 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"/>
+
+        <TextView
             android:id="@+id/end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp"/>
+            android:layout_margin="20dp"/>
 
     </LinearLayout>
-
 
     <ImageView
         android:id="@+id/imgView"

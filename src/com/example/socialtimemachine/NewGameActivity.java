@@ -87,7 +87,7 @@ public class NewGameActivity extends FragmentActivity {
                         .append(mMinute));
     }
 
-    public static class DatePickerFragment extends DialogFragment
+    public static class StartDatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener{
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -102,8 +102,41 @@ public class NewGameActivity extends FragmentActivity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day){
-            // Do something with the date chosen by user
+            TextView dateView = (TextView) getActivity().findViewById(R.id.start_date);
+            updateDate(dateView, year, month, day);
         }
+    }
+
+    public static class EndDatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener{
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day){
+            TextView dateView = (TextView) getActivity().findViewById(R.id.end_date);
+            updateDate(dateView, year, month, day);
+        }
+    }
+
+    static void updateDate(TextView dateView, int mYear, int mMonth, int mDay){
+        dateView.setText(
+                new StringBuilder()
+                // Month is 0 based so add 1
+                .append(mDay)
+                .append("/")
+                .append(mMonth + 1)
+                .append("/")
+                .append(mYear)
+                .append(" "));
     }
 	
 	public static final int RESULT_LOAD_IMAGE = 1;
@@ -139,7 +172,7 @@ public class NewGameActivity extends FragmentActivity {
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
-        mHour = c.get(Calendar.HOUR);
+        mHour = c.get(Calendar.HOUR_OF_DAY);
         mMinute = c.get(Calendar.MINUTE);
 
         View.OnClickListener timeListener = new View.OnClickListener() {
@@ -156,18 +189,48 @@ public class NewGameActivity extends FragmentActivity {
         TextView endTimeView = (TextView) findViewById(R.id.end_time);
         updateTime(endTimeView, mHour, mMinute);
         endTimeView.setOnClickListener(timeListener);
-	}
+
+        View.OnClickListener dateListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                showDatePickerDialog(v);
+            }
+        };
+
+        TextView startDateView = (TextView) findViewById(R.id.start_date);
+        updateDate(startDateView, mYear, mMonth, mDay);
+        startDateView.setOnClickListener(dateListener);
+
+        TextView endDateView = (TextView) findViewById(R.id.end_date);
+        updateDate(endDateView, mYear, mMonth, mDay);
+        endDateView.setOnClickListener(dateListener);
+
+    }
 
 
     private void showTimePickerDialog(View v){
+        DialogFragment newFragment;
+
         if (v.getId() == R.id.start_time) {
-            DialogFragment newFragment = new StartTimePickerFragment();
-            newFragment.show(this.getFragmentManager(), "timePicker");
+            newFragment = new StartTimePickerFragment();
         }
         else {
-            DialogFragment newFragment = new EndTimePickerFragment();
-            newFragment.show(this.getFragmentManager(), "timePicker");
+            newFragment = new EndTimePickerFragment();
         }
+
+        newFragment.show(this.getFragmentManager(), "timePicker");
+    }
+
+    public void showDatePickerDialog(View v){
+        DialogFragment newFragment;
+        if (v.getId() == R.id.start_date) {
+            newFragment = new StartDatePickerFragment();
+        }
+        else {
+            newFragment = new EndDatePickerFragment();
+        }
+
+        newFragment.show(this.getFragmentManager(), "datePicker");
     }
 
     public void saveGame(View view){
@@ -197,11 +260,6 @@ public class NewGameActivity extends FragmentActivity {
 
     public void showFriends(View view){
         startPickerActivity(PickerActivity.FRIEND_PICKER, REAUTH_ACTIVITY_CODE);
-    }
-
-    public void showDatePickerDialog(View v){
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(this.getFragmentManager(), "datePicker");
     }
 
 	@Override 
