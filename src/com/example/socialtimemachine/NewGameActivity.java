@@ -35,10 +35,13 @@ import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 
+import org.w3c.dom.Text;
+
 public class NewGameActivity extends FragmentActivity {
 
-    public static class TimePickerFragment extends DialogFragment
+    public static class StartTimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
+
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
             // Use the current time as the default values for the picker
@@ -51,13 +54,37 @@ public class NewGameActivity extends FragmentActivity {
         }
 
         public void  onTimeSet(TimePicker view, int hourOfDay, int minute){
-            TextView startTimeView = (TextView) getActivity().findViewById(R.id.start_time);
-            startTimeView.setText(
-                    new StringBuilder()
-                        .append(hourOfDay)
-                        .append(":")
-                        .append(minute));
+            TextView time = (TextView) getActivity().findViewById(R.id.start_time);
+            updateTime(time, hourOfDay, minute);
         }
+    }
+
+    public static class EndTimePickerFragment extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            // Use the current time as the default values for the picker
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            // Create a nea instance of TimePickerDialog and return it
+            return  new TimePickerDialog(getActivity(), this, hour, minute, true);
+        }
+
+        public void  onTimeSet(TimePicker view, int hourOfDay, int minute){
+            TextView time = (TextView) getActivity().findViewById(R.id.end_time);
+            updateTime(time, hourOfDay, minute);
+        }
+    }
+
+    static void updateTime(TextView timeView, int mHour, int mMinute){
+        timeView.setText(
+                new StringBuilder()
+                        .append(mHour)
+                        .append(":")
+                        .append(mMinute));
     }
 
     public static class DatePickerFragment extends DialogFragment
@@ -84,6 +111,12 @@ public class NewGameActivity extends FragmentActivity {
 	private static final String EMPTY_STRING = "";
 	private String userId = "";
 	private UiLifecycleHelper uiHelper;
+
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+    private int mHour;
+    private int mMinute;
 		
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -102,47 +135,68 @@ public class NewGameActivity extends FragmentActivity {
 			}
 		});		*/
 
-        TextView startTimeView = (TextView) findViewById(R.id.start_time);
-        startTimeView.setOnClickListener(new View.OnClickListener(){
+        Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+        mHour = c.get(Calendar.HOUR);
+        mMinute = c.get(Calendar.MINUTE);
+
+        View.OnClickListener timeListener = new View.OnClickListener() {
             @Override
-            public  void onClick(View timeView){
-                showTimePickerDialog(timeView);
+            public void onClick(View v) {
+                showTimePickerDialog(v);
             }
-        });
-	}
-	
-	public void saveGame(View view){
-		EditText titleOfGame = (EditText)findViewById(R.id.game_title);
-		EditText textOfUser = (EditText)findViewById(R.id.game_description);
-		ImageView gameImage = (ImageView)findViewById(R.id.imgView);
-		setUserId();		
-		
-		if (!titleOfGame.getText().toString().matches("") &&
-				!textOfUser.getText().toString().matches("") &&
-				gameImage.getDrawable() != null && !userId.matches("")) {
-			ParseObject newgame = new ParseObject("Game");
-			newgame.put("gameTitle", titleOfGame.getText().toString());
-			newgame.put("gameText", textOfUser.getText().toString());
-			newgame.put("gameUser", userId);
-			Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
-			ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-			ParseFile file = new ParseFile("picturePath.png", stream.toByteArray());
-			newgame.put("gameImage", file);
-			newgame.saveInBackground();
-		
-			Intent intent = new Intent(this, HomeActivity.class);
-			startActivity(intent);		
-		}
-	}
-	
-	public void showFriends(View view){
-		startPickerActivity(PickerActivity.FRIEND_PICKER, REAUTH_ACTIVITY_CODE);
+        };
+
+        TextView startTimeView = (TextView) findViewById(R.id.start_time);
+        updateTime(startTimeView, mHour, mMinute);
+        startTimeView.setOnClickListener(timeListener);
+
+        TextView endTimeView = (TextView) findViewById(R.id.end_time);
+        updateTime(endTimeView, mHour, mMinute);
+        endTimeView.setOnClickListener(timeListener);
 	}
 
-    public void showTimePickerDialog(View v){
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(this.getFragmentManager(), "timePicker");
+
+    private void showTimePickerDialog(View v){
+        if (v.getId() == R.id.start_time) {
+            DialogFragment newFragment = new StartTimePickerFragment();
+            newFragment.show(this.getFragmentManager(), "timePicker");
+        }
+        else {
+            DialogFragment newFragment = new EndTimePickerFragment();
+            newFragment.show(this.getFragmentManager(), "timePicker");
+        }
+    }
+
+    public void saveGame(View view){
+        EditText titleOfGame = (EditText)findViewById(R.id.game_title);
+        EditText textOfUser = (EditText)findViewById(R.id.game_description);
+        ImageView gameImage = (ImageView)findViewById(R.id.imgView);
+        setUserId();
+
+        if (!titleOfGame.getText().toString().matches("") &&
+                !textOfUser.getText().toString().matches("") &&
+                gameImage.getDrawable() != null && !userId.matches("")) {
+            ParseObject newgame = new ParseObject("Game");
+            newgame.put("gameTitle", titleOfGame.getText().toString());
+            newgame.put("gameText", textOfUser.getText().toString());
+            newgame.put("gameUser", userId);
+            Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            ParseFile file = new ParseFile("picturePath.png", stream.toByteArray());
+            newgame.put("gameImage", file);
+            newgame.saveInBackground();
+
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void showFriends(View view){
+        startPickerActivity(PickerActivity.FRIEND_PICKER, REAUTH_ACTIVITY_CODE);
     }
 
     public void showDatePickerDialog(View v){

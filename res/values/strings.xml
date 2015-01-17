@@ -16,8 +16,6 @@
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_button_text">Ok</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="start_time">Start Time</string>
-    <string name="end_time">End Time</string>
 
     <color name="main_activity_background">#42A5F5</color>
     <color name="selection_background">#F2EEEF</color>
