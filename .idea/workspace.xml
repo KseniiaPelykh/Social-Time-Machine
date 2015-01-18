@@ -17,16 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.socialtimemachine" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f58654a6-e502-41df-a8fb-4c453e71876e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java" afterPath="$PROJECT_DIR$/src/com/example/socialtimemachine/NewGameActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/socialtimemachine/SlidingTabsBasicFragment.java" afterPath="$PROJECT_DIR$/src/com/example/socialtimemachine/SlidingTabsBasicFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/tab_item.xml" afterPath="$PROJECT_DIR$/res/layout/tab_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f58654a6-e502-41df-a8fb-4c453e71876e" name="Default" comment="" />
     <ignored path="SocialTimeMachine.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -81,8 +72,8 @@
       <file leaf-file-name="SlidingTabsBasicFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/socialtimemachine/SlidingTabsBasicFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46575344" vertical-offset="1802" max-vertical-offset="2601">
-              <caret line="122" column="74" selection-start-line="122" selection-start-column="74" selection-end-line="122" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.37899545" vertical-offset="1908" max-vertical-offset="2601">
+              <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2058,8 +2049,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/socialtimemachine/SlidingTabsBasicFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46575344" vertical-offset="1802" max-vertical-offset="2601">
-          <caret line="122" column="74" selection-start-line="122" selection-start-column="74" selection-end-line="122" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.37899545" vertical-offset="1908" max-vertical-offset="2601">
+          <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
