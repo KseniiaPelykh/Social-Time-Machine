@@ -2,6 +2,7 @@ package com.example.socialtimemachine;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -242,17 +243,27 @@ public class NewGameActivity extends FragmentActivity {
         EditText gameDescription = (EditText)findViewById(R.id.game_description);
         TextView startDateView = (TextView)findViewById(R.id.start_date);
         TextView endDateView = (TextView)findViewById(R.id.end_date);
+        TextView startTimeView = (TextView)findViewById(R.id.start_time);
+        TextView endTimeView = (TextView)findViewById(R.id.end_time);
         //ImageView gameImage = (ImageView)findViewById(R.id.imgView);
         setUserId();
 
         DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
         Date startDate = new Date();
         Date endDate = new Date();
+        Date startTime = new Date();
+        Date endTime = new Date();
+
         try{
             String startText = startDateView.getText().toString();
             startDate = dateFormatter.parse(startText);
             String endText = endDateView.getText().toString();
             endDate = dateFormatter.parse(endText);
+            String startTimeText = startTimeView.getText().toString();
+            startTime = timeFormatter.parse(startTimeText);
+            String endTimeText = endTimeView.getText().toString();
+            endTime = timeFormatter.parse(endTimeText);
         }
         catch (ParseException e){
             e.printStackTrace();
@@ -263,6 +274,8 @@ public class NewGameActivity extends FragmentActivity {
                 !gameDescription.getText().toString().matches("") &&
                 startDate != null &&
                 endDate != null &&
+                startTime != null &&
+                endTime != null &&
                 //gameImage.getDrawable() != null &&
                 !userId.matches("")) {
                     ParseObject newgame = new ParseObject("Game");
@@ -271,6 +284,8 @@ public class NewGameActivity extends FragmentActivity {
                     newgame.put("gameUser", userId);
                     newgame.put("startDate", startDate);
                     newgame.put("endDate", endDate);
+                    newgame.put("startTime", startTime);
+                    newgame.put("endTime", endTime);
                     /*Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);

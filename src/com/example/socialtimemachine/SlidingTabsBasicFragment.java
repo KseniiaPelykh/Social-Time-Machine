@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.socialtimemachine.view.SlidingTabLayout;
+import com.parse.ParseObject;
+
+import java.util.List;
 
 /**
  * A basic sample which shows how to use SlidingTabLayout
@@ -22,6 +25,7 @@ import com.example.socialtimemachine.view.SlidingTabLayout;
 
 public class SlidingTabsBasicFragment extends Fragment {
 
+    List<ParseObject> ob;
     static final String LOG_TAG = "SlidingTabsBasicFragment";
 
     /**
@@ -117,6 +121,7 @@ public class SlidingTabsBasicFragment extends Fragment {
          */
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
+
             // Inflate a new layout from our resources
             View view = getActivity().getLayoutInflater().inflate(R.layout.tab_item,
                     container, false);
