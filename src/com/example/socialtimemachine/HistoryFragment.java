@@ -25,22 +25,13 @@ public class HistoryFragment extends Fragment {
     ListView listview;
     ProgressDialog mProgressDialog;
     List<ParseObject> ob;
-    ArrayAdapter<String> adapter;
+    CustomAdapter adapter;
 
     @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                             Bundle savedInstanceState){
 
        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tab_item, container, false);
-       /*ListView games = (ListView) rootView.findViewById(R.id.game_list);
-       CustomAdapter mainAdapter = new CustomAdapter(getActivity());
-       games.setAdapter(mainAdapter);
-       games.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           // argument position gives the index of item which is clicked
-           public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-           }
-       });
-        */
         new RemoteDataTask().execute();
         return rootView;
    }
@@ -64,35 +55,21 @@ public class HistoryFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                    "Game");
-            try {
-                ob = query.find();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            adapter = new CustomAdapter(getActivity());
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            // Locate the listview in listview_main.xml
             listview = (ListView)getActivity().findViewById(R.id.game_list);
-            // Pass the results into an ArrayAdapter
-            adapter = new ArrayAdapter<String>(getActivity(),
-                    R.layout.listview_item, R.id.game_title);
 
-            // Retrieve object "name" from Parse.com database
-            for (ParseObject Game : ob) {
-                adapter.add((String) Game.get("gameTitle"));
-            }
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
 
             // Close the progressdialog
             mProgressDialog.dismiss();
-            // Capture button clicks on ListView items
 
+            // Capture button clicks on ListView items
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
