@@ -134,8 +134,8 @@ public class HomeActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new HistoryFragment();
-        }
+                return new HistoryFragment();
+         }
 
         @Override
         public CharSequence getPageTitle(int position) {
