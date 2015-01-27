@@ -1,8 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:facebook="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/white">
     <FrameLayout
@@ -10,11 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <FrameLayout
-        android:id="@+id/basic_tabs_content_fragment"
-        android:layout_weight="2"
+    <com.example.socialtimemachine.view.SlidingTabLayout
+        android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
-        android:layout_height="10px" />
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+     />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 
     <ImageButton
         android:id="@+id/add_new_game_button"
@@ -27,4 +31,5 @@
         android:background="@drawable/oval_ripple"
         android:elevation="@dimen/elevation_low"
         android:src="@android:drawable/ic_input_add"/>
+
 </LinearLayout><!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/layout/activity_home.xml -->

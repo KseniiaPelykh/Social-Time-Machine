@@ -104,6 +104,7 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/colors.xml -->
     <eat-comment/>
+    <color name="text">#D8000000</color>
     <color name="white">#FFFFFF</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
@@ -183,6 +184,9 @@
     <eat-comment/>
     <dimen name="bottom_ellipsis_height">4dp</dimen>
     <dimen name="bottom_text_size">12sp</dimen>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="circle_image_view_size">5dp</dimen>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.facebook.android/facebook/3.21.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
@@ -237,9 +241,24 @@
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.rengwuxian.materialedittext/library/1.8.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="floating_label_text_size">12sp</dimen>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="image_view_height">80dp</dimen>
+    <dimen name="image_view_width">100dp</dimen>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.rengwuxian.materialedittext/library/1.8.1/res/values/values.xml -->
+    <eat-comment/>
     <dimen name="inner_components_spacing">8dp</dimen>
     <dimen name="inner_padding_left">0dp</dimen>
     <dimen name="inner_padding_right">0dp</dimen>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="little_margin">5dp</dimen>
+    <dimen name="margin_bottom_list_item">20dp</dimen>
+    <dimen name="margin_top_list_item">20dp</dimen>
+    <dimen name="text_size_body_medium">14sp</dimen>
+    <dimen name="text_size_title_medium">20sp</dimen>
+    <dimen name="text_view_margin">10dp</dimen>
+    <dimen name="tiny_margin">2dp</dimen>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.facebook.android/facebook/3.21.1/res/values/values.xml -->
     <eat-comment/>
     <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
