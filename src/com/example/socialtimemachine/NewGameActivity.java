@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -44,6 +45,7 @@ import com.parse.ParseObject;
 import org.w3c.dom.Text;
 
 public class NewGameActivity extends FragmentActivity {
+    static DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.LONG);
 
     public static class StartTimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
@@ -134,15 +136,8 @@ public class NewGameActivity extends FragmentActivity {
     }
 
     static void updateDate(TextView dateView, int mYear, int mMonth, int mDay){
-        dateView.setText(
-                new StringBuilder()
-                // Month is 0 based so add 1
-                .append(mDay)
-                .append("/")
-                .append(mMonth + 1)
-                .append("/")
-                .append(mYear)
-                .append(" "));
+        Date date = new Date(mYear, mMonth, mDay, 0, 0);
+        dateView.setText(dateFormatter.format(date));
     }
 	
 	public static final int RESULT_LOAD_IMAGE = 1;
@@ -163,8 +158,8 @@ public class NewGameActivity extends FragmentActivity {
 		Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");
 		setContentView(R.layout.activity_newgame);
 		
-		/*Button buttonLoadImage = (Button) findViewById(R.id.buttonLoadPicture);
-		buttonLoadImage.setOnClickListener(new View.OnClickListener()
+		ImageView iconLoadImage = (ImageView) findViewById(R.id.add_photo);
+		iconLoadImage.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View arg0){
@@ -172,7 +167,7 @@ public class NewGameActivity extends FragmentActivity {
 				intent.setType("image/*");
 				startActivityForResult(intent, RESULT_LOAD_IMAGE);
 			}
-		});		*/
+		});
 
         Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
@@ -245,10 +240,9 @@ public class NewGameActivity extends FragmentActivity {
         TextView endDateView = (TextView)findViewById(R.id.end_date);
         TextView startTimeView = (TextView)findViewById(R.id.start_time);
         TextView endTimeView = (TextView)findViewById(R.id.end_time);
-        //ImageView gameImage = (ImageView)findViewById(R.id.imgView);
+        ImageView gameImage = (ImageView)findViewById(R.id.imgView);
         setUserId();
 
-        DateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
         DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
         Date startDate = new Date();
         Date endDate = new Date();
@@ -276,7 +270,7 @@ public class NewGameActivity extends FragmentActivity {
                 endDate != null &&
                 startTime != null &&
                 endTime != null &&
-                //gameImage.getDrawable() != null &&
+                gameImage.getDrawable() != null &&
                 !userId.matches("")) {
                     ParseObject newgame = new ParseObject("Game");
                     newgame.put("gameTitle", gameTitle.getText().toString());
@@ -286,11 +280,11 @@ public class NewGameActivity extends FragmentActivity {
                     newgame.put("endDate", endDate);
                     newgame.put("startTime", startTime);
                     newgame.put("endTime", endTime);
-                    /*Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
+                    Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     ParseFile file = new ParseFile("picturePath.png", stream.toByteArray());
-                    newgame.put("gameImage", file);*/
+                    newgame.put("gameImage", file);
                     newgame.saveInBackground();
 
                     Intent intent = new Intent(this, HomeActivity.class);

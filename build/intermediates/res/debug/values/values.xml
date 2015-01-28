@@ -54,6 +54,12 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="dividers">#1F000000</color>
+    <color name="green">#76FF03</color>
+    <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
@@ -243,6 +249,9 @@
     <dimen name="floating_label_text_size">12sp</dimen>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
     <eat-comment/>
+    <dimen name="history_profile_picture_size">100dp</dimen>
+    <dimen name="icon_size">32dp</dimen>
+    <dimen name="image_size">200dp</dimen>
     <dimen name="image_view_height">80dp</dimen>
     <dimen name="image_view_width">100dp</dimen>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/build/intermediates/exploded-aar/com.rengwuxian.materialedittext/library/1.8.1/res/values/values.xml -->
@@ -253,6 +262,7 @@
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="little_margin">5dp</dimen>
+    <dimen name="margin">20dp</dimen>
     <dimen name="margin_bottom_list_item">20dp</dimen>
     <dimen name="margin_top_list_item">20dp</dimen>
     <dimen name="text_size_body_medium">14sp</dimen>
@@ -328,6 +338,7 @@
     <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/strings.xml -->
     <eat-comment/>
+    <string name="duration">Duration</string>
     <string name="end">End</string>
     <string name="error_dialog_button_text">Ok</string>
     <string name="error_dialog_title">Error</string>

@@ -97,7 +97,7 @@ public class CustomAdapter extends ParseQueryAdapter {
 
     private Bitmap getProfilePicture(String userId) {
         Bitmap profilePicture = null;
-        final String urlString = "https://graph.facebook.com/" + userId + "/picture?type=small";
+        final String urlString = "https://graph.facebook.com/" + userId + "/picture?type=normal";
         URL imageURL = null;
 
         try {

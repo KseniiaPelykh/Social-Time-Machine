@@ -19,6 +19,8 @@
     <string name="start">Start</string>
     <string name="end">End</string>
 
+    <string name="duration">Duration</string>
+
     <color name="main_activity_background">#42A5F5</color>
     <color name="selection_background">#F2EEEF</color>
 </resources>

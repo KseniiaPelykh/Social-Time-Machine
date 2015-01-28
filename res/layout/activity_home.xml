@@ -1,3 +1,8 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,8 +22,9 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <ImageButton
         android:id="@+id/add_new_game_button"
@@ -26,10 +32,11 @@
         android:layout_height="@dimen/diameter"
         android:layout_gravity="end|bottom"
         android:layout_marginBottom="@dimen/add_button_margin"
-        android:layout_marginEnd="@dimen/add_button_margin"
         android:tint="@android:color/white"
         android:background="@drawable/oval_ripple"
         android:elevation="@dimen/elevation_low"
         android:src="@android:drawable/ic_input_add"/>
 
 </LinearLayout>
+
+</ScrollView>
