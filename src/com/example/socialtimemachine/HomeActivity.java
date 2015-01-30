@@ -21,6 +21,7 @@ import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
 import com.parse.Parse;
+import com.parse.ParseInstallation;
 
 public class HomeActivity extends FragmentActivity {
 
@@ -103,14 +104,16 @@ public class HomeActivity extends FragmentActivity {
 
     private void setUserId() {
         Session session = Session.getActiveSession();
-
-        if (session != null) {
+          if (session != null) {
             Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
 
                 @Override
                 public void onCompleted(GraphUser user, Response response) {
                     if (user != null) {
                         userId = user.getId();
+                        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                        installation.put("userId", userId);
+                        installation.saveInBackground();
                     }
                 }
             });
