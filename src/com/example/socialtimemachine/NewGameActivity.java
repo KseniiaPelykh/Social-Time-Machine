@@ -255,13 +255,9 @@ public class NewGameActivity extends FragmentActivity {
 
         try{
             String startText = startDateView.getText().toString();
-            Log.i("StartDateText :", startText);
             startDate = dateFormatter.parse(startText);
-            Log.i("StartDate: ", startDate.toString());
             String endText = endDateView.getText().toString();
-            Log.i("EndDateText : ", endText);
             endDate = dateFormatter.parse(endText);
-            Log.i("EndDate:", endDate.toString());
             String startTimeText = startTimeView.getText().toString();
             startTime = timeFormatter.parse(startTimeText);
             String endTimeText = endTimeView.getText().toString();
