@@ -56,6 +56,7 @@ public class HistoryFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             adapter = new CustomAdapter(getActivity());
+
             return null;
         }
 
@@ -66,9 +67,6 @@ public class HistoryFragment extends Fragment {
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
 
-            // Close the progressdialog
-            mProgressDialog.dismiss();
-
             // Capture button clicks on ListView items
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -77,7 +75,11 @@ public class HistoryFragment extends Fragment {
                     // Send single item click data to SingleItemView Class
                 }
             });
-        }
+
+            // Close the progressdialog
+            mProgressDialog.dismiss();
+
+            }
     }
 
 }

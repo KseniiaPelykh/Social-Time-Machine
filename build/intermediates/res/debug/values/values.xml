@@ -249,7 +249,7 @@
     <dimen name="floating_label_text_size">12sp</dimen>
     <!-- From: file:/C:/Users/Ksu/workspace/SocialTimeMachine/res/values/dimens.xml -->
     <eat-comment/>
-    <dimen name="history_profile_picture_size">100dp</dimen>
+    <dimen name="history_profile_picture_size">50dp</dimen>
     <dimen name="icon_size">32dp</dimen>
     <dimen name="image_size">200dp</dimen>
     <dimen name="image_view_height">80dp</dimen>

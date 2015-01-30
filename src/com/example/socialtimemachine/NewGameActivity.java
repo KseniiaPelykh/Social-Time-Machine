@@ -46,6 +46,7 @@ import org.w3c.dom.Text;
 
 public class NewGameActivity extends FragmentActivity {
     static DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.LONG);
+    static DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
 
     public static class StartTimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
@@ -88,11 +89,11 @@ public class NewGameActivity extends FragmentActivity {
     }
 
     static void updateTime(TextView timeView, int mHour, int mMinute){
-        timeView.setText(
-                new StringBuilder()
-                        .append(mHour)
-                        .append(":")
-                        .append(mMinute));
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR, mHour);
+        cal.set(Calendar.MINUTE, mMinute);
+        Date date = cal.getTime();
+        timeView.setText(timeFormatter.format(date));
     }
 
     public static class StartDatePickerFragment extends DialogFragment
@@ -136,7 +137,11 @@ public class NewGameActivity extends FragmentActivity {
     }
 
     static void updateDate(TextView dateView, int mYear, int mMonth, int mDay){
-        Date date = new Date(mYear, mMonth, mDay, 0, 0);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, mYear);
+        cal.set(Calendar.MONTH, mMonth);
+        cal.set(Calendar.DAY_OF_MONTH, mDay);
+        Date date = cal.getTime();
         dateView.setText(dateFormatter.format(date));
     }
 	
@@ -243,7 +248,6 @@ public class NewGameActivity extends FragmentActivity {
         ImageView gameImage = (ImageView)findViewById(R.id.imgView);
         setUserId();
 
-        DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
         Date startDate = new Date();
         Date endDate = new Date();
         Date startTime = new Date();
@@ -251,13 +255,18 @@ public class NewGameActivity extends FragmentActivity {
 
         try{
             String startText = startDateView.getText().toString();
+            Log.i("StartDateText :", startText);
             startDate = dateFormatter.parse(startText);
+            Log.i("StartDate: ", startDate.toString());
             String endText = endDateView.getText().toString();
+            Log.i("EndDateText : ", endText);
             endDate = dateFormatter.parse(endText);
+            Log.i("EndDate:", endDate.toString());
             String startTimeText = startTimeView.getText().toString();
             startTime = timeFormatter.parse(startTimeText);
             String endTimeText = endTimeView.getText().toString();
             endTime = timeFormatter.parse(endTimeText);
+            Calendar cal = Calendar.getInstance();
         }
         catch (ParseException e){
             e.printStackTrace();

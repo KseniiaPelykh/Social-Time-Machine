@@ -27,7 +27,7 @@
     <dimen name="image_view_width">100dp</dimen>
 
     <dimen name="icon_size">32dp</dimen>
-    <dimen name="history_profile_picture_size">100dp</dimen>
+    <dimen name="history_profile_picture_size">50dp</dimen>
     <dimen name="image_size">200dp</dimen>
 
 </resources>

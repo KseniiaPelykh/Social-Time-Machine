@@ -54,6 +54,9 @@ public class CustomAdapter extends ParseQueryAdapter {
        TextView titleTextView = (TextView) v.findViewById(R.id.game_title);
        titleTextView.setText(object.getString("gameTitle"));
 
+       TextView descriptionTextView = (TextView) v.findViewById(R.id.game_description);
+       descriptionTextView.setText(object.getString("gameDescription"));
+
        // Add the user profile picture
        String userId = object.getString("gameUser");
        if (userId != null) {
@@ -67,21 +70,11 @@ public class CustomAdapter extends ParseQueryAdapter {
                userProfilePicture.setImageBitmap(bitmap);
            }
 
-           String userName = getUserName(userId);
-           if (userName != null) {
+           //String userName = getUserName(userId);
+           /*if (userName != null) {
                TextView userNameView = (TextView) v.findViewById(R.id.userName);
                userNameView.setText(userName);
-           }
-       }
-
-       DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.LONG);
-
-       // Add the start time and end time of game
-       TextView startTimeTextView = (TextView) v.findViewById(R.id.list_item_start_time);
-       Date startDate = object.getDate("startDate");
-       if (startDate != null) {
-           String startDateString = dateFormatter.format(startDate);
-           startTimeTextView.setText(startDateString);
+           }*/
        }
 
 	  // Add and download the image
