@@ -33,7 +33,6 @@ public class HomeActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setUserId();
 
-        Parse.initialize(this, "CblPQNXB5bztS0zjzox1vPPb8mRCiOorvNQMD3Jb", "fcqLiSWLa2JVHMW0esKZP3ewkAJm0jYPEjhlYVmg");
         setContentView(R.layout.activity_home);
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items

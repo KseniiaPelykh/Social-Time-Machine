@@ -1,21 +1,13 @@
 package com.example.socialtimemachine;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Base64;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParsePush;
+import com.parse.PushService;
+import com.parse.SaveCallback;
 
 public class MainActivity extends FragmentActivity {
 
@@ -25,8 +17,9 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.activity_main);
+        PushService.setDefaultPushCallback(this, MainActivity.class);
+
+        setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			// Add the fragment on initial activity setup
 			mainFragment = new MainFragment();
