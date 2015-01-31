@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 
 import com.facebook.FacebookException;
 import com.facebook.widget.FriendPickerFragment;
@@ -98,6 +99,13 @@ public class PickerActivity extends FragmentActivity {
 	}
 
 	private void finishActivity() {
+        if (FRIEND_PICKER.equals(getIntent().getData())){
+            if (friendPickerFragment != null) {
+                NewGameActivity.setSelectedUsers(friendPickerFragment.getSelection());
+            } else {
+            }
+        }
+
 	    setResult(RESULT_OK, null);
 	    finish();
 	}
