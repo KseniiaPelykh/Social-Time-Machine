@@ -40,7 +40,10 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.parse.Parse;
 import com.parse.ParseFile;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
 
 
 public class NewGameActivity extends FragmentActivity {
@@ -299,8 +302,18 @@ public class NewGameActivity extends FragmentActivity {
                     newgame.put("endDate", endDate);
                     newgame.put("startTime", startTime);
                     newgame.put("endTime", endTime);
-                    newgame.addAll("users",usersIds);
+                    newgame.addAll("users", usersIds);
                     newgame.saveInBackground();
+
+                    // Create Installation query, aggiunge gli utenti veri.
+                    ParseQuery pushQuery = ParseInstallation.getQuery();
+                    pushQuery.whereEqualTo("userId", userId);
+
+                    // Send push notification to query
+                    ParsePush push = new ParsePush();
+                    push.setQuery(pushQuery);
+                    push.setMessage("Push da utente funziona");
+                    push.sendInBackground();
 
                     ParseObject newpart = new ParseObject("Part");
                     Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
