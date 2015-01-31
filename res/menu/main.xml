@@ -4,9 +4,17 @@
     tools:context="com.example.socialtimemachine.MainActivity" >
 
     <item
+        android:id="@+id/get_active_games"
+        android:icon="@drawable/android_get_active_games"
+        android:title = "@string/get_active_games"
+        android:showAsAction="ifRoom">
+    </item>
+
+    <item
         android:id="@+id/logout"
         android:orderInCategory="100"
         android:title="@string/logout_button"
         android:showAsAction="never"/>
-	
+
+
 </menu>

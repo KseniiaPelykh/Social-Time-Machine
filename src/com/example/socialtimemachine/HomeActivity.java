@@ -92,6 +92,11 @@ public class HomeActivity extends FragmentActivity {
                 startActivity(intent);
 
                 return true;
+
+            case R.id.get_active_games:
+                Intent getActiveGames = new Intent(this, GetActiveGamesActivity.class);
+                getActiveGames.putExtra("UserId", userId);
+                startActivity(getActiveGames);
             default:
                 return super.onOptionsItemSelected(item);
         }

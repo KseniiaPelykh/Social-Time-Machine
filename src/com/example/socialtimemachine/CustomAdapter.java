@@ -36,7 +36,8 @@ public class CustomAdapter extends ParseQueryAdapter {
       	 // Use the QueryFactory to construct a PQA that will only show
 		 super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
 		   public ParseQuery create() {
-		     ParseQuery query = new ParseQuery("Game");
+		     ParseQuery query = new ParseQuery("Part");
+               query.include("gameParent");
                return query;
 		   }
 		 });
@@ -52,13 +53,13 @@ public class CustomAdapter extends ParseQueryAdapter {
 
        // Add the title of the game
        TextView titleTextView = (TextView) v.findViewById(R.id.game_title);
-       titleTextView.setText(object.getString("gameTitle"));
+       titleTextView.setText(object.getParseObject("gameParent").getString("gameTitle"));
 
        TextView descriptionTextView = (TextView) v.findViewById(R.id.game_description);
-       descriptionTextView.setText(object.getString("gameDescription"));
+       descriptionTextView.setText(object.getString("description"));
 
        // Add the user profile picture
-       String userId = object.getString("gameUser");
+       String userId = object.getString("user");
        if (userId != null) {
            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                    .permitAll().build();
@@ -79,7 +80,7 @@ public class CustomAdapter extends ParseQueryAdapter {
 
 	  // Add and download the image
 	  ParseImageView image = (ParseImageView) v.findViewById(R.id.image);
-	  ParseFile imageFile = object.getParseFile("gameImage");
+	  ParseFile imageFile = object.getParseFile("image");
 	  if (imageFile != null) {
 	    image.setParseFile(imageFile);
 	    image.loadInBackground();

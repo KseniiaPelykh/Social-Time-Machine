@@ -8,4 +8,5 @@
     <color name="dividers">#1F000000</color>
     <color name="text">#D8000000</color>
     <color name="green">#76FF03</color>
+    <color name="red">#e51c23</color>
 </resources>

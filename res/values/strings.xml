@@ -23,4 +23,9 @@
 
     <color name="main_activity_background">#42A5F5</color>
     <color name="selection_background">#F2EEEF</color>
+
+    <string name="get_active_games">Get active games</string>
+    <string name="active_games">Active Games</string>
+    <string name="accept_game">Accept</string>
+    <string name="decline_game">Decline</string>
 </resources>

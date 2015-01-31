@@ -30,4 +30,6 @@
     <dimen name="history_profile_picture_size">50dp</dimen>
     <dimen name="image_size">200dp</dimen>
 
+    <dimen name="standart_pading">25dp</dimen>
+
 </resources>

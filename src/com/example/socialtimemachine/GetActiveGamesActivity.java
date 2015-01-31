@@ -2,49 +2,51 @@ package com.example.socialtimemachine;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.parse.ParseException;
+import com.example.socialtimemachine.adapter.ActiveGamesAdapter;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.model.GraphUser;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.util.List;
 
-public class HistoryFragment extends Fragment {
+public class GetActiveGamesActivity extends Activity {
 
+    private String userId;
     ListView listview;
     ProgressDialog mProgressDialog;
     List<ParseObject> ob;
-    CustomAdapter adapter;
+    ActiveGamesAdapter adapter;
 
-    @Override
-   public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                            Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            userId = extras.getString("UserId");
+        }
 
-       ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tab_item, container, false);
-        new RemoteDataTask().execute();
-        return rootView;
-   }
+        setContentView(R.layout.activity_get_active_games);
+        new LoadActiveGames().execute();
+    }
 
-    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
+    private class LoadActiveGames extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(getActivity());
+            mProgressDialog = new ProgressDialog(GetActiveGamesActivity.this);
 
             // Set progressdialog title
-            mProgressDialog.setTitle("History");
+            mProgressDialog.setTitle("Active Games");
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
@@ -55,14 +57,14 @@ public class HistoryFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            adapter = new CustomAdapter(getActivity());
-
+            adapter = new ActiveGamesAdapter(GetActiveGamesActivity.this, userId);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            listview = (ListView)getActivity().findViewById(R.id.game_list);
+
+            listview = (ListView) findViewById(R.id.active_games_list);
 
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
@@ -78,7 +80,6 @@ public class HistoryFragment extends Fragment {
 
             // Close the progressdialog
             mProgressDialog.dismiss();
-
-            }
+        }
     }
 }

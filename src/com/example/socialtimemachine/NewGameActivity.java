@@ -279,18 +279,22 @@ public class NewGameActivity extends FragmentActivity {
                 !userId.matches("")) {
                     ParseObject newgame = new ParseObject("Game");
                     newgame.put("gameTitle", gameTitle.getText().toString());
-                    newgame.put("gameDescription", gameDescription.getText().toString());
-                    newgame.put("gameUser", userId);
                     newgame.put("startDate", startDate);
                     newgame.put("endDate", endDate);
                     newgame.put("startTime", startTime);
                     newgame.put("endTime", endTime);
+                    newgame.saveInBackground();
+
+                    ParseObject newpart = new ParseObject("Part");
                     Bitmap bitmap = ((BitmapDrawable) gameImage.getDrawable()).getBitmap();
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     ParseFile file = new ParseFile("picturePath.png", stream.toByteArray());
-                    newgame.put("gameImage", file);
-                    newgame.saveInBackground();
+                    newpart.put("image", file);
+                    newpart.put("gameParent",newgame);
+                    newpart.put("description", gameDescription.getText().toString());
+                    newpart.put("user", userId);
+                    newpart.saveInBackground();
 
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);

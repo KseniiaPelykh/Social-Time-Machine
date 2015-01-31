@@ -45,6 +45,14 @@
              	<category android:name="android.intent.category.LAUNCHER"/>
          	</intent-filter>
          </activity>
+        <activity
+            android:name="com.example.socialtimemachine.GetActiveGamesActivity"
+            android:label="@string/active_games" >
+            <intent-filter>
+                <action android:name="com.example.socialtimemachine.GetActiveGamesActivity" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
          <activity
              android:name="com.example.socialtimemachine.NewGameActivity"
              android:label="@string/app_name">
