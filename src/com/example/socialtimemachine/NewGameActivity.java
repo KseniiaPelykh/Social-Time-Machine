@@ -2,12 +2,14 @@ package com.example.socialtimemachine;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.sql.Time;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -19,14 +21,12 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,11 +42,19 @@ import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 
-import org.w3c.dom.Text;
 
 public class NewGameActivity extends FragmentActivity {
     static DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.LONG);
     static DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
+    private static List<GraphUser> selectedUsers;
+
+    public List<GraphUser> getSelectedUsers(){
+        return selectedUsers;
+    }
+
+    public static void setSelectedUsers(List<GraphUser> users){
+        selectedUsers = users;
+    }
 
     public static class StartTimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
@@ -269,20 +277,29 @@ public class NewGameActivity extends FragmentActivity {
             Log.i("Date : ", e.toString());
         };
 
-        if (!gameTitle.getText().toString().matches("") &&
+        List<String> usersIds = new ArrayList<String>();
+        if (getSelectedUsers() != null){
+            for (GraphUser graphUser : getSelectedUsers()){
+                usersIds.add(graphUser.getId());
+            };
+        }
+
+         if (!gameTitle.getText().toString().matches("") &&
                 !gameDescription.getText().toString().matches("") &&
                 startDate != null &&
                 endDate != null &&
                 startTime != null &&
                 endTime != null &&
                 gameImage.getDrawable() != null &&
-                !userId.matches("")) {
+                !userId.matches("") &&
+                usersIds != null) {
                     ParseObject newgame = new ParseObject("Game");
                     newgame.put("gameTitle", gameTitle.getText().toString());
                     newgame.put("startDate", startDate);
                     newgame.put("endDate", endDate);
                     newgame.put("startTime", startTime);
                     newgame.put("endTime", endTime);
+                    newgame.addAll("users",usersIds);
                     newgame.saveInBackground();
 
                     ParseObject newpart = new ParseObject("Part");
@@ -326,9 +343,7 @@ public class NewGameActivity extends FragmentActivity {
 		}
 		
 		if (requestCode == REAUTH_ACTIVITY_CODE) {
-		      uiHelper.onActivityResult(requestCode, resultCode, data);
 		    } else if (resultCode == Activity.RESULT_OK) {
-		        // Do nothing for now
 		    }
 	}
 	
