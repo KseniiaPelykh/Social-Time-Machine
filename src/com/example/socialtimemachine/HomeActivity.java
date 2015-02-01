@@ -47,11 +47,11 @@ public class HomeActivity extends FragmentActivity {
 
        if (savedInstanceState == null) {
             // Add fragments to activity setup
-            selectionFragment = new SelectionFragment();
+            /*selectionFragment = new SelectionFragment();
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.selection_container, selectionFragment)
-                    .commit();
+                    .commit();*/
 
             View addButton = this.findViewById(R.id.add_new_game_button);
             addButton.setOnClickListener(new View.OnClickListener() {
