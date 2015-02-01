@@ -158,9 +158,7 @@ public class NewGameActivity extends FragmentActivity {
 	
 	public static final int RESULT_LOAD_IMAGE = 1;
 	public static final int REAUTH_ACTIVITY_CODE = 2;
-	private static final String EMPTY_STRING = "";
 	private String userId = "";
-	private UiLifecycleHelper uiHelper;
 
     private int mYear;
     private int mMonth;

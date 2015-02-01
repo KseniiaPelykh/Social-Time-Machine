@@ -1,11 +1,15 @@
 package com.example.socialtimemachine.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.socialtimemachine.AcceptGameActivity;
+import com.example.socialtimemachine.GetActiveGamesActivity;
 import com.example.socialtimemachine.R;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -18,11 +22,12 @@ public class ActiveGamesAdapter extends ParseQueryAdapter {
 
     static DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.LONG);
     static DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
+    static String partId;
 
     public ActiveGamesAdapter(Context context, final String userId) {
          super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
              public ParseQuery create() {
-                 Log.i("userId:", userId);
+                 partId = userId;
                  ParseQuery query = new ParseQuery("Game")
                          .whereEqualTo("users", userId);
                  return query;
@@ -31,7 +36,7 @@ public class ActiveGamesAdapter extends ParseQueryAdapter {
     }
 
     @Override
-    public View getItemView(ParseObject object, View v, ViewGroup parent) {
+    public View getItemView(final ParseObject object, View v, ViewGroup parent) {
 
         if (v == null) {
             v = View.inflate(getContext(), R.layout.active_game_item, null);
@@ -53,6 +58,16 @@ public class ActiveGamesAdapter extends ParseQueryAdapter {
         TextView endTime = (TextView) v.findViewById(R.id.active_game_time_end);
         endTime.setText(timeFormatter.format(object.getDate("endTime")));
 
+        final Button accept = (Button) v.findViewById(R.id.accept_button);
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent acceptGame = new Intent( getContext(), AcceptGameActivity.class);
+                acceptGame.putExtra("GameId", object.getObjectId());
+                acceptGame.putExtra("UserId", partId);
+                getContext().startActivity(acceptGame);
+            }
+        });
         return  v;
     }
 }
