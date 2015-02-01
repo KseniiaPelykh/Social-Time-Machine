@@ -2,12 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/standart_pading">
+    android:padding="@dimen/standart_pading"
+    android:background="@color/background_list"
+    android:layout_gravity="center">
 
     <ListView
         android:id="@+id/active_games_list"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:dividerHeight="0dp"
+        android:divider="@null">
     </ListView>
 
 </LinearLayout>
