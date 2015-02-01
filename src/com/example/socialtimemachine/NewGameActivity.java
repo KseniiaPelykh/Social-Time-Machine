@@ -271,12 +271,35 @@ public class NewGameActivity extends FragmentActivity {
             startTime = timeFormatter.parse(startTimeText);
             String endTimeText = endTimeView.getText().toString();
             endTime = timeFormatter.parse(endTimeText);
-            Calendar cal = Calendar.getInstance();
         }
         catch (ParseException e){
             e.printStackTrace();
             Log.i("Date : ", e.toString());
         };
+
+        Calendar calDate = Calendar.getInstance();
+        Calendar calTime = Calendar.getInstance();
+        Calendar calFinal = Calendar.getInstance();
+
+        calDate.setTime(startDate);
+        calTime.setTime(startTime);
+
+        calFinal.set(Calendar.YEAR, calDate.get(Calendar.YEAR));
+        calFinal.set(Calendar.MONTH, calDate.get(Calendar.MONTH));
+        calFinal.set(Calendar.DAY_OF_MONTH, calDate.get(Calendar.DAY_OF_MONTH));
+        calFinal.set(Calendar.HOUR, calTime.get(Calendar.HOUR));
+        calFinal.set(Calendar.MINUTE, calTime.get(Calendar.MINUTE));
+        Date startFinal = calFinal.getTime();
+
+        calDate.setTime(endDate);
+        calTime.setTime(endTime);
+        calFinal.set(Calendar.YEAR, calDate.get(Calendar.YEAR));
+        calFinal.set(Calendar.MONTH, calDate.get(Calendar.MONTH));
+        calFinal.set(Calendar.DAY_OF_MONTH, calDate.get(Calendar.DAY_OF_MONTH));
+        calFinal.set(Calendar.HOUR, calTime.get(Calendar.HOUR));
+        calFinal.set(Calendar.MINUTE, calTime.get(Calendar.MINUTE));
+
+        Date endFinal = calFinal.getTime();
 
         List<String> usersIds = new ArrayList<String>();
         if (getSelectedUsers() != null){
@@ -296,10 +319,8 @@ public class NewGameActivity extends FragmentActivity {
                 usersIds != null) {
                     ParseObject newgame = new ParseObject("Game");
                     newgame.put("gameTitle", gameTitle.getText().toString());
-                    newgame.put("startDate", startDate);
-                    newgame.put("endDate", endDate);
-                    newgame.put("startTime", startTime);
-                    newgame.put("endTime", endTime);
+                    newgame.put("startFinal", startFinal);
+                    newgame.put("endFinal", endFinal);
                     newgame.addAll("users", usersIds);
                     newgame.saveInBackground();
 

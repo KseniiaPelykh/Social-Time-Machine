@@ -157,16 +157,16 @@ public class AcceptGameActivity extends Activity {
             titleTextView.setText(game.getString("gameTitle"));
 
             TextView startDate = (TextView) findViewById(R.id.accept_game_date_start);
-            startDate.setText(dateFormatter.format(game.getDate("startDate")));
+            startDate.setText(dateFormatter.format(game.getDate("startFinal")));
 
             TextView endDate = (TextView) findViewById(R.id.accept_game_date_end);
-            endDate.setText(dateFormatter.format(game.getDate("endDate")));
+            endDate.setText(dateFormatter.format(game.getDate("endFinal")));
 
             TextView startTime = (TextView) findViewById(R.id.accept_game_time_start);
-            startTime.setText(timeFormatter.format(game.getDate("startTime")));
+            startTime.setText(timeFormatter.format(game.getDate("startFinal")));
 
             TextView endTime = (TextView) findViewById(R.id.accept_game_time_end);
-            endTime.setText(timeFormatter.format(game.getDate("endTime")));
+            endTime.setText(timeFormatter.format(game.getDate("endFinal")));
 
             // Close the progressdialog
             mProgressDialog.dismiss();
