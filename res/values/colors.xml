@@ -9,4 +9,5 @@
     <color name="text">#D8000000</color>
     <color name="green">#76FF03</color>
     <color name="red">#e51c23</color>
+    <color name="background_list">#E8EAF6</color>
 </resources>
