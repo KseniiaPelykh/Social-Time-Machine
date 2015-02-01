@@ -1,35 +1,50 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/white">
-    <FrameLayout
-        android:id="@+id/selection_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-    <com.example.socialtimemachine.view.SlidingTabLayout
-        android:id="@+id/sliding_tabs"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/selection_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.example.socialtimemachine.view.SlidingTabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
-     />
+        android:layout_below="@+id/heading">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/add_new_game_button"
-        android:layout_width="@dimen/diameter"
-        android:layout_height="@dimen/diameter"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="5dp"
-        android:tint="@android:color/white"
-        android:background="@drawable/oval_ripple"
-        android:elevation="@dimen/elevation_low"
-        android:src="@android:drawable/ic_input_add"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-</LinearLayout>
+            <ImageButton
+                android:id="@+id/add_new_game_button"
+                android:layout_width="@dimen/diameter"
+                android:layout_height="@dimen/diameter"
+                android:layout_gravity="right|bottom|end"
+                android:layout_marginBottom="5dp"
+                android:tint="@android:color/white"
+                android:background="@drawable/oval_ripple"
+                android:elevation="@dimen/elevation_low"
+                android:src="@android:drawable/ic_input_add"/>
+        </FrameLayout>
+    </RelativeLayout>
+</RelativeLayout>
