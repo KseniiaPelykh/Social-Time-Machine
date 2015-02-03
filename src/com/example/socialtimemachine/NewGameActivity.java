@@ -17,15 +17,18 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -369,8 +372,8 @@ public class NewGameActivity extends FragmentActivity {
 			String picturePath = cursor.getString(columnIndex);
 			
 			File image = new File(picturePath);
-			Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath());			
-			ImageView gameImage = (ImageView) findViewById(R.id.imgView);
+         	Bitmap bitmap = decodeSampledBitmapFromResource(image.getAbsolutePath());
+           	ImageView gameImage = (ImageView) findViewById(R.id.imgView);
 			gameImage.setImageBitmap(bitmap);			
 		}
 		
@@ -402,4 +405,53 @@ public class NewGameActivity extends FragmentActivity {
 		intent.setClass(this, PickerActivity.class);
 		startActivityForResult(intent, requestCode);
 	}
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        Log.i("height image", "he" + height);
+        Log.i("width image", "wi" + width);
+
+        Log.i("req height", "he" + reqHeight);
+        Log.i("width width", "wi" + reqWidth);
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        Log.i("Sample size:", "" + inSampleSize);
+
+        return inSampleSize;
+    }
+
+    public Bitmap decodeSampledBitmapFromResource(String pathName) {
+     // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(pathName, options);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int reqWidth = (int) (size.x * 0.9);
+        int reqHeight = (int) (size.y*0.7);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(pathName, options);
+    }
 }

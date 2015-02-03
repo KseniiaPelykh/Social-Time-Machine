@@ -6,14 +6,16 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    android:gravity="left">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:gravity="left">
 
         <TextView
@@ -36,7 +38,7 @@
                 android:layout_height="@dimen/history_profile_picture_size"
                 android:layout_width="@dimen/history_profile_picture_size"
                 android:scaleType="centerCrop"
-                android:layout_marginRight="@dimen/margin"/>
+                android:layout_marginRight="10dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -61,12 +63,18 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <com.parse.ParseImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/black">
+            <com.parse.ParseImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                />
+            </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>
