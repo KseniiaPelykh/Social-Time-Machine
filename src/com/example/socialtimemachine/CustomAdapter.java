@@ -1,15 +1,21 @@
 package com.example.socialtimemachine;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.socialtimemachine.adapter.ActiveGamesAdapter;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
@@ -23,6 +29,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -61,15 +68,9 @@ public class CustomAdapter extends ParseQueryAdapter {
        // Add the user profile picture
        String userId = object.getString("user");
        if (userId != null) {
-           StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                   .permitAll().build();
-           StrictMode.setThreadPolicy(policy);
-
-           Bitmap bitmap = getProfilePicture(userId);
-           if (bitmap != null) {
-               ImageView userProfilePicture = (ImageView) v.findViewById(R.id.game_user_profile_picture);
-               userProfilePicture.setImageBitmap(bitmap);
-           }
+          ImageView userProfilePicture = (ImageView) v.findViewById(R.id.game_user_profile_picture);
+          BitmapWorkerTask task = new BitmapWorkerTask(userProfilePicture);
+          task.execute(userId);
 
            //String userName = getUserName(userId);
            /*if (userName != null) {
@@ -89,31 +90,63 @@ public class CustomAdapter extends ParseQueryAdapter {
 	  return v;
 	}
 
-    private Bitmap getProfilePicture(String userId) {
-        Bitmap profilePicture = null;
-        final String urlString = "https://graph.facebook.com/" + userId + "/picture?type=normal";
-        URL imageURL = null;
+    private class BitmapWorkerTask extends AsyncTask<String, Void, Bitmap> {
+        private  final WeakReference<ImageView> imageViewReference;
+        ProgressDialog mProgressDialog;
+        Bitmap bitmap;
 
-        try {
-            imageURL = new URL(urlString);
-        } catch (MalformedURLException e) {
-            Log.i("GetUserProfilePicture:", e.toString());
+        public BitmapWorkerTask(ImageView imageView){
+            imageViewReference = new WeakReference<ImageView>(imageView);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
         }
 
-        try {
-            HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
-            connection.setDoInput(true);
-            connection.setInstanceFollowRedirects( true );
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            profilePicture = BitmapFactory.decodeStream(inputStream);
-
-        } catch (IOException e) {
-            Log.i("GetUserProfilePicture:", e.toString());
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            String userId = params[0];
+            return bitmap = getProfilePicture(userId);
         }
 
-        return profilePicture;
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            if (imageViewReference != null && bitmap != null) {
+                final ImageView imageView = imageViewReference.get();
+                if (imageView != null) {
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+        }
+
+        private Bitmap getProfilePicture(String userId) {
+            Bitmap profilePicture = null;
+            final String urlString = "https://graph.facebook.com/" + userId + "/picture?type=normal";
+            URL imageURL = null;
+
+            try {
+                imageURL = new URL(urlString);
+            } catch (MalformedURLException e) {
+                Log.i("GetUserProfilePicture:", e.toString());
+            }
+
+            try {
+                HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
+                connection.setDoInput(true);
+                connection.setInstanceFollowRedirects( true );
+                connection.connect();
+                InputStream inputStream = connection.getInputStream();
+                profilePicture = BitmapFactory.decodeStream(inputStream);
+
+            } catch (IOException e) {
+                Log.i("GetUserProfilePicture:", e.toString());
+            }
+
+            return profilePicture;
+        }
     }
+
+
 
     private String getUserName(String userId){
         String userName = null;
