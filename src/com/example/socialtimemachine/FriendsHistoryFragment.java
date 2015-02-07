@@ -20,15 +20,16 @@ import com.parse.ParseObject;
 
 import java.util.List;
 
-public class HistoryFragment extends Fragment {
+public class FriendsHistoryFragment extends Fragment {
 
     @Override
-   public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                            Bundle savedInstanceState){
-       ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tab_item, container, false);
-       new HistoryTask().execute(2);
-       return rootView;
-   }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState){
+
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tab_item, container, false);
+        new HistoryTask().execute(1);
+        return rootView;
+    }
 
     public class HistoryTask extends AsyncTask<Integer, Void, Void> {
         ListView listview;

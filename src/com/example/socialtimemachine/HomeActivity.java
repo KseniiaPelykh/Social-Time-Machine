@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -14,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.socialtimemachine.view.SlidingTabLayout;
 import com.facebook.Request;
@@ -37,33 +37,46 @@ public class HomeActivity extends FragmentActivity {
         setContentView(R.layout.activity_home);
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        mViewPager.setAdapter(new TabPagerAdapter(getSupportFragmentManager()));
+        // mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        // mViewPager.setAdapter(new TabPagerAdapter(this.getSupportFragmentManager()));
 
         // Give the SlidingTabLayout the ViewPager, this must be done AFTER the ViewPager has had
         // it's PagerAdapter set.
-        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
-        mSlidingTabLayout.setViewPager(mViewPager);
+        //mSlidingTabLayout=(SlidingTabLayout)findViewById(R.id.sliding_tabs);
+       // findViewById(R.id.sliding_tabs);
+       // mSlidingTabLayout.setViewPager(mViewPager);
 
-       if (savedInstanceState == null) {
+        if(savedInstanceState==null)
+        {
             // Add fragments to activity setup
             /*selectionFragment = new SelectionFragment();
             getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.selection_container, selectionFragment)
-                    .commit();*/
+            .beginTransaction()
+            .add(R.id.selection_container, selectionFragment)
+            .commit();*/
 
-            View addButton = this.findViewById(R.id.add_new_game_button);
-            addButton.setOnClickListener(new View.OnClickListener() {
+            HistoryFragment history = new HistoryFragment();
+            getSupportFragmentManager()
+            .beginTransaction()
+            .add(R.id.history_container, history)
+            .commit();
+
+             View addButton = this.findViewById(R.id.add_new_game_button);
+             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     newGame(view);
                 }
-            });
-        } else {
+              });
+        }
+        else
+        {
             // Or set the fragment from restored state info
-            selectionFragment = (SelectionFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.selection_container);
+            //selectionFragment = (SelectionFragment) getSupportFragmentManager()
+                 //.findFragmentById(R.id.selection_container);
+
+            HistoryFragment history = (HistoryFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.history_container);
         }
     }
 
@@ -126,14 +139,19 @@ public class HomeActivity extends FragmentActivity {
         }
     }
 
-    private class TabPagerAdapter extends FragmentStatePagerAdapter{
-        public TabPagerAdapter(FragmentManager fragmentManager) {
+    public class TabPagerAdapter extends FragmentStatePagerAdapter{
+        public TabPagerAdapter(FragmentManager fragmentManager)
+        {
             super(fragmentManager);
         }
 
-        /**
-         * the number of pages to display
-         */
+       @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Log.i("v", "Position" + position);
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+            return fragment;
+        }
+
         @Override
         public int getCount() {
             return 3;
@@ -141,8 +159,20 @@ public class HomeActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-                return new HistoryFragment();
+            switch (position) {
+                case 0:
+                    return new MyHistoryFragment();
+                case 1:
+                    return new FriendsHistoryFragment();
+                default:
+                    return new HistoryFragment();
+            }
          }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            super.destroyItem(container, position, object);
+        }
 
         @Override
         public CharSequence getPageTitle(int position) {

@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +19,17 @@ import com.parse.ParseObject;
 
 import java.util.List;
 
-public class HistoryFragment extends Fragment {
-
+/**
+ * Created by Ksu on 2/7/2015.
+ */
+public class MyHistoryFragment extends Fragment {
     @Override
-   public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                            Bundle savedInstanceState){
-       ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tab_item, container, false);
-       new HistoryTask().execute(2);
-       return rootView;
-   }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState){
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.tab_item, container, false);
+        new HistoryTask().execute(0);
+        return rootView;
+    }
 
     public class HistoryTask extends AsyncTask<Integer, Void, Void> {
         ListView listview;
@@ -92,3 +93,5 @@ public class HistoryFragment extends Fragment {
         }
     }
 }
+
+

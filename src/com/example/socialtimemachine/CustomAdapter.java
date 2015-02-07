@@ -19,6 +19,7 @@ import com.example.socialtimemachine.adapter.ActiveGamesAdapter;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
+import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
@@ -39,12 +40,32 @@ import java.util.Date;
 
 public class CustomAdapter extends ParseQueryAdapter {
 
-	public CustomAdapter(Context context) {
+    public static final int GET_MY_GAMES = 0;
+    public static final int GET_ALL_GAMES = 2;
+    public static final int GET_FRIENDS_GAMES = 1;
+
+	public CustomAdapter(Context context, final int type, final String userId) {
       	 // Use the QueryFactory to construct a PQA that will only show
 		 super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
 		   public ParseQuery create() {
-		     ParseQuery query = new ParseQuery("Part");
+
+               Log.i("Type", "type" + type);
+               Log.i("Custom Adapter userID", userId);
+
+               ParseQuery query = null;
+               if (type == GET_ALL_GAMES) {
+                   query = new ParseQuery("Part");
+               }
+               else if (type == GET_MY_GAMES){
+                   query = new ParseQuery("Part")
+                    .whereEqualTo("user", userId);
+               } else {
+                    query = new ParseQuery("Part")
+                        .whereNotEqualTo("user", userId);
+               }
+
                query.include("gameParent");
+
                return query;
 		   }
 		 });

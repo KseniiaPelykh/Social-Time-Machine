@@ -412,12 +412,6 @@ public class NewGameActivity extends FragmentActivity {
         final int width = options.outWidth;
         int inSampleSize = 1;
 
-        Log.i("height image", "he" + height);
-        Log.i("width image", "wi" + width);
-
-        Log.i("req height", "he" + reqHeight);
-        Log.i("width width", "wi" + reqWidth);
-
         if (height > reqHeight || width > reqWidth) {
 
             final int halfHeight = height / 2;
