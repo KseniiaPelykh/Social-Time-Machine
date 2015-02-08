@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -16,8 +17,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.socialtimemachine.adapter.ActiveGamesAdapter;
+import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.android.Util;
+import com.facebook.model.GraphObject;
 import com.facebook.model.GraphUser;
 import com.parse.Parse;
 import com.parse.ParseFile;
@@ -26,6 +31,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -93,11 +101,8 @@ public class CustomAdapter extends ParseQueryAdapter {
           BitmapWorkerTask task = new BitmapWorkerTask(userProfilePicture);
           task.execute(userId);
 
-           //String userName = getUserName(userId);
-           /*if (userName != null) {
-               TextView userNameView = (TextView) v.findViewById(R.id.userName);
-               userNameView.setText(userName);
-           }*/
+           TextView userNameView = (TextView) v.findViewById(R.id.userName);
+           setUserName(userId, userNameView);
        }
 
 	  // Add and download the image
@@ -167,31 +172,24 @@ public class CustomAdapter extends ParseQueryAdapter {
         }
     }
 
-
-
-    private String getUserName(String userId){
-        String userName = null;
-        final String urlString = "https://graph.facebook.com/" + userId + "?fields=name";
-        URL userNameUrl = null;
-
-        try {
-            userNameUrl = new URL(urlString);
-        } catch (MalformedURLException e) {
-            Log.i("GetUserName:", e.toString());
-        }
-
-        try {
-            HttpURLConnection connection = (HttpURLConnection) userNameUrl.openConnection();
-            connection.setDoInput(true);
-            connection.setInstanceFollowRedirects( true );
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-            userName = inputStream.toString();
-
-        } catch (IOException e) {
-            Log.i("GetUserName:", e.toString());
-        }
-
-        return userName;
+    private void setUserName(String userId, final TextView textView){
+        Session session = Session.getActiveSession();
+         new Request(session, "/" + userId, null , HttpMethod.GET,
+                new Request.Callback() {
+                    public void onCompleted(Response response) {
+                        GraphObject responseGraphObject = response
+                                .getGraphObject();
+                        JSONObject json = responseGraphObject
+                                .getInnerJSONObject();
+                        try {
+                            String userName = json.getString("name");
+                            if (userName != null) {
+                                textView.setText(userName);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).executeAsync();
     }
 }
