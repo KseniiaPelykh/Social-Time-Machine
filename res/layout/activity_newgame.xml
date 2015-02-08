@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
         android:padding="5dp">
@@ -33,11 +33,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/time"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -46,78 +53,127 @@
                     android:text="@string/duration"
                     android:textColor="@color/text"
                     android:textSize="@dimen/text_size_body_medium"
-                    android:layout_margin="20dp" />
+                    android:layout_marginLeft="10dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/start_date"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_body_medium"
-                    android:textColor="@color/secondary_text"
-                    android:layout_margin="20dp"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp">
 
-                <TextView
-                    android:id="@+id/end_date"
+                    <TextView
+                        android:id="@+id/start_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_body_medium"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:id="@+id/start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_body_medium"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_body_medium"
-                    android:textColor="@color/secondary_text"
-                    android:layout_margin="20dp"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/end_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_body_medium"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_body_medium"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
 
-                <TextView
-                    android:id="@+id/start_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_body_medium"
-                    android:textColor="@color/secondary_text"
-                    android:layout_margin="20dp"/>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/end_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_body_medium"
-                    android:textColor="@color/secondary_text"
-                    android:layout_margin="20dp"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/dividers"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dip"
-            android:background="@color/dividers"
-            android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/add_friend"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/friends_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_friends"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/text_size_body_medium"
+                    android:onClick="showFriends"
+                    android:adjustViewBounds="true"/>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/dividers"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/add_photo"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:src="@drawable/add_photo_label"
-                android:layout_margin="@dimen/margin"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/add_photo_label"/>
 
             <ImageView
                 android:id="@+id/imgView"
+                android:layout_marginLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="150dp">
             </ImageView>
@@ -125,15 +181,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/friends_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_friends"
-            android:onClick="showFriends"
-            android:adjustViewBounds="true">
-        </Button>
-
-        <Button
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
