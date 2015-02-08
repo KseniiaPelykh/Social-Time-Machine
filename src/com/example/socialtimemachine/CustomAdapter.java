@@ -102,7 +102,8 @@ public class CustomAdapter extends ParseQueryAdapter {
           task.execute(userId);
 
            TextView userNameView = (TextView) v.findViewById(R.id.userName);
-           setUserName(userId, userNameView);
+           UserNameWorkerTask userNameTask = new UserNameWorkerTask(userNameView);
+           userNameTask.execute(userId);
        }
 
 	  // Add and download the image
@@ -172,24 +173,52 @@ public class CustomAdapter extends ParseQueryAdapter {
         }
     }
 
-    private void setUserName(String userId, final TextView textView){
-        Session session = Session.getActiveSession();
-         new Request(session, "/" + userId, null , HttpMethod.GET,
-                new Request.Callback() {
-                    public void onCompleted(Response response) {
-                        GraphObject responseGraphObject = response
-                                .getGraphObject();
-                        JSONObject json = responseGraphObject
-                                .getInnerJSONObject();
-                        try {
-                            String userName = json.getString("name");
-                            if (userName != null) {
-                                textView.setText(userName);
+    private class UserNameWorkerTask extends AsyncTask<String, Void, Void> {
+        private final WeakReference<TextView> textViewReference;
+        private String userName;
+
+        public UserNameWorkerTask(TextView textView) {
+            textViewReference = new WeakReference<TextView>(textView);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            String userId = params[0];
+            setUserName(userId);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            if (textViewReference != null && userName != null) {
+                final TextView textView = textViewReference.get();
+                if (textView != null) {
+                    textView.setText(userName);
+                }
+            }
+        }
+
+        private void setUserName(String userId) {
+            Session session = Session.getActiveSession();
+            new Request(session, "/" + userId, null, HttpMethod.GET,
+                    new Request.Callback() {
+                        public void onCompleted(Response response) {
+                            GraphObject responseGraphObject = response
+                                    .getGraphObject();
+                            JSONObject json = responseGraphObject
+                                    .getInnerJSONObject();
+                            try {
+                                userName = json.getString("name");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                }).executeAsync();
+                    }).executeAndWait();
+        }
     }
 }
