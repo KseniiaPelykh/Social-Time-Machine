@@ -334,7 +334,7 @@ public class NewGameActivity extends FragmentActivity {
                     // Send push notification to query
                     ParsePush push = new ParsePush();
                     push.setQuery(pushQuery);
-                    push.setMessage("Hai ricevuto una nuova sfida");
+                    push.setMessage("You've received a new challenge");
                     push.sendInBackground();
 
                     ParseObject newpart = new ParseObject("Part");
@@ -347,6 +347,9 @@ public class NewGameActivity extends FragmentActivity {
                     newpart.put("description", gameDescription.getText().toString());
                     newpart.put("user", userId);
                     newpart.saveInBackground();
+
+                    newgame.put("firstPart", newpart);
+                    newgame.saveInBackground();
 
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);

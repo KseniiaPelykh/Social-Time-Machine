@@ -32,4 +32,8 @@
     <string name="active_games">Active Games</string>
     <string name="accept_game">Accept</string>
     <string name="decline_game">Decline</string>
+
+   <string name="stm">STM</string>
+
+    <string name="get_gallery">Gallery</string>
 </resources>

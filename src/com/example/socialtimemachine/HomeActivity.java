@@ -20,7 +20,6 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
-import com.parse.Parse;
 import com.parse.ParseInstallation;
 
 public class HomeActivity extends FragmentActivity {
@@ -92,7 +91,7 @@ public class HomeActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.logout:
+           /* case R.id.logout:
                 Session session = Session.getActiveSession();
                 if (session != null) {
                     if (!session.isClosed()) {
@@ -104,12 +103,16 @@ public class HomeActivity extends FragmentActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
 
-                return true;
+                return true;*/
 
             case R.id.get_active_games:
                 Intent getActiveGames = new Intent(this, GetActiveGamesActivity.class);
                 getActiveGames.putExtra("UserId", userId);
                 startActivity(getActiveGames);
+            case R.id.get_gallery:
+                Intent getGallery = new Intent(this, GetGalleryActivity.class);
+                getGallery.putExtra("UserId", userId);
+                startActivity(getGallery);
             default:
                 return super.onOptionsItemSelected(item);
         }

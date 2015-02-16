@@ -106,7 +106,7 @@ public class CustomAdapter extends ParseQueryAdapter {
            userNameTask.execute(userId);
        }
 
-	  // Add and download the image
+	  // Download and Add the image
 	  ParseImageView image = (ParseImageView) v.findViewById(R.id.image);
 	  ParseFile imageFile = object.getParseFile("image");
 	  if (imageFile != null) {
