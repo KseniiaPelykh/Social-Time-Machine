@@ -1,9 +1,16 @@
 apply plugin: 'android'
 
+repositories {
+    maven { url 'http://clinker.47deg.com/nexus/content/groups/public' }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile project(':facebook')
     compile 'com.rengwuxian.materialedittext:library:1.8.1'
+    compile ('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
+        transitive = true
+    }
 }
 
 buildscript {

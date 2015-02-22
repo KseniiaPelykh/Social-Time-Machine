@@ -4,30 +4,29 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-
-import com.example.socialtimemachine.adapter.GalleryAdapter;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.model.GraphUser;
+import android.util.Log;
+import android.widget.ExpandableListView;
+import com.example.socialtimemachine.adapter.GameGalleryAdapter;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class GetGalleryActivity extends Activity {
-
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
-
         new GalleryTask().execute();
     }
 
-    public class GalleryTask extends AsyncTask<Integer, Void, Void> {
-        GridView gridview;
+    public class GalleryTask extends AsyncTask<Void, Void, Void> {
         ProgressDialog mProgressDialog;
-        GalleryAdapter adapter;
-        private String userId;
+        GameGalleryAdapter gameGalleryAdapter;
+        List<String> listDataHeader;
+        HashMap<String, List<String>> listDataChild;
+        ExpandableListView expandableListView;
 
         @Override
         protected void onPreExecute() {
@@ -46,45 +45,60 @@ public class GetGalleryActivity extends Activity {
         }
 
         @Override
-        protected Void doInBackground(Integer... params) {
-            Session session = Session.getActiveSession();
-            if (session != null) {
-                Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        if (user != null) {
-                            userId = user.getId();
-                        }
-                    }
-                });
-
-                Request.executeAndWait(request);
-            }
-
-            adapter = new GalleryAdapter(GetGalleryActivity.this, userId);
+        protected Void doInBackground(Void... params) {
+            prepareListData();
+            gameGalleryAdapter = new GameGalleryAdapter(
+                    GetGalleryActivity.this,
+                    listDataHeader,
+                    listDataChild);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            gridview = (GridView)GetGalleryActivity.this.findViewById(R.id.gallery_grid_view);
-
-            // Binds the Adapter to the ListView
-            gridview.setAdapter(adapter);
-
-            // Capture button clicks on ListView items
-            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
-                    // Send single item click data to SingleItemView Class
-                }
-            });
-
-            // Close the progressdialog
+            expandableListView = (ExpandableListView) GetGalleryActivity.this.findViewById(R.id.gallery_list);
+            expandableListView.setAdapter(gameGalleryAdapter);
+            int count = gameGalleryAdapter.getGroupCount();
+            for (int position = 1; position <= count; position++)
+                expandableListView.expandGroup(position - 1);
             mProgressDialog.dismiss();
         }
+
+        private void prepareListData() {
+            listDataHeader = new ArrayList<String>();
+            listDataChild = new HashMap<String, List<String>>();
+            int location = 0;
+            List<ParseObject> games = Collections.EMPTY_LIST;
+            List<ParseObject> moves = Collections.EMPTY_LIST;
+            List<String> currentGame = new ArrayList<String>();
+
+             try {
+                games = new ParseQuery("Game").find();
+            } catch (Exception e) {
+                Log.i("Get Games", e.toString());
+            }
+
+            for (ParseObject game : games) {
+                listDataHeader.add(game.getObjectId());
+                Log.i("GameId", game.getObjectId());
+
+                try {
+                    moves = new ParseQuery("Part")
+                            .whereEqualTo("gameParent", game)
+                            .find();
+                } catch (Exception e) {
+                    Log.i("Get Moves", e.toString());
+                }
+
+                currentGame.clear();
+                for (ParseObject move : moves) {
+                     currentGame.add(move.getObjectId());
+                     Log.i("Get Move", move.getObjectId());
+                }
+
+                listDataChild.put(listDataHeader.get(location), currentGame);
+                location++;
+            };
+        }
     }
-
-
 }

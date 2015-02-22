@@ -14,12 +14,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.socialtimemachine.view.SlidingTabLayout;
+import com.facebook.FacebookException;
+import com.facebook.FacebookOperationCanceledException;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
+import com.facebook.widget.WebDialog;
 import com.parse.ParseInstallation;
 
 public class HomeActivity extends FragmentActivity {
@@ -91,7 +95,7 @@ public class HomeActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //Handle presses on the action bar items
         switch (item.getItemId()) {
-           /* case R.id.logout:
+           case R.id.logout:
                 Session session = Session.getActiveSession();
                 if (session != null) {
                     if (!session.isClosed()) {
@@ -103,7 +107,7 @@ public class HomeActivity extends FragmentActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
 
-                return true;*/
+                return true;
 
             case R.id.get_active_games:
                 Intent getActiveGames = new Intent(this, GetActiveGamesActivity.class);
@@ -113,6 +117,8 @@ public class HomeActivity extends FragmentActivity {
                 Intent getGallery = new Intent(this, GetGalleryActivity.class);
                 getGallery.putExtra("UserId", userId);
                 startActivity(getGallery);
+            case R.id.invite_friends:
+                sendRequestDialog();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -190,5 +196,47 @@ public class HomeActivity extends FragmentActivity {
                     return "No Title";
             }
         }
+    }
+
+    private void sendRequestDialog() {
+        Bundle params = new Bundle();
+        params.putString("message", "Invite you to try the STM");
+
+        WebDialog requestsDialog = (
+                new WebDialog.RequestsDialogBuilder(HomeActivity.this,
+                        Session.getActiveSession(),
+                        params))
+                .setOnCompleteListener(new WebDialog.OnCompleteListener() {
+
+                    @Override
+                    public void onComplete(Bundle values,
+                                           FacebookException error) {
+                        if (error != null) {
+                            if (error instanceof FacebookOperationCanceledException) {
+                                Toast.makeText(HomeActivity.this.getApplicationContext(),
+                                        "Request cancelled",
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(HomeActivity.this.getApplicationContext(),
+                                        "Network Error",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            final String requestId = values.getString("request");
+                            if (requestId != null) {
+                                Toast.makeText(HomeActivity.this.getApplicationContext(),
+                                        "Request sent",
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(HomeActivity.this.getApplicationContext(),
+                                        "Request cancelled",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                })
+                .build();
+        requestsDialog.show();
     }
 }

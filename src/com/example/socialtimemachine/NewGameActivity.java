@@ -348,9 +348,6 @@ public class NewGameActivity extends FragmentActivity {
                     newpart.put("user", userId);
                     newpart.saveInBackground();
 
-                    newgame.put("firstPart", newpart);
-                    newgame.saveInBackground();
-
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }

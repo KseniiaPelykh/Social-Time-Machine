@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Social Time Machine</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -33,7 +32,9 @@
     <string name="accept_game">Accept</string>
     <string name="decline_game">Decline</string>
 
-   <string name="stm">STM</string>
+    <string name="stm">STM</string>
 
     <string name="get_gallery">Gallery</string>
+
+    <string name="send_request">Send Request</string>
 </resources>
