@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ExpandableListView;
 import com.example.socialtimemachine.adapter.GameGalleryAdapter;
+import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class GetGalleryActivity extends Activity {
     public class GalleryTask extends AsyncTask<Void, Void, Void> {
         ProgressDialog mProgressDialog;
         GameGalleryAdapter gameGalleryAdapter;
-        List<String> listDataHeader;
-        HashMap<String, List<String>> listDataChild;
+        List<ParseObject> listDataHeader;
+        HashMap<ParseObject, List<ParseObject>> listDataChild;
         ExpandableListView expandableListView;
 
         @Override
@@ -62,12 +63,11 @@ public class GetGalleryActivity extends Activity {
         }
 
         private void prepareListData() {
-            listDataHeader = new ArrayList<String>();
-            listDataChild = new HashMap<String, List<String>>();
+            listDataHeader = new ArrayList<ParseObject>();
+            listDataChild = new HashMap<ParseObject, List<ParseObject>>();
             int location = 0;
             List<ParseObject> games = Collections.EMPTY_LIST;
             List<ParseObject> moves = Collections.EMPTY_LIST;
-            List<String> currentGame = new ArrayList<String>();
 
              try {
                 games = new ParseQuery("Game").find();
@@ -76,7 +76,7 @@ public class GetGalleryActivity extends Activity {
             }
 
             for (ParseObject game : games) {
-                listDataHeader.add(game.getObjectId());
+                listDataHeader.add(game);
                 Log.i("GameId", game.getObjectId());
 
                 try {
@@ -87,13 +87,7 @@ public class GetGalleryActivity extends Activity {
                     Log.i("Get Moves", e.toString());
                 }
 
-                currentGame = new ArrayList<String>();
-                for (ParseObject move : moves) {
-                     currentGame.add(move.getObjectId());
-                     Log.i("Get Move", move.getObjectId());
-                }
-
-                listDataChild.put(listDataHeader.get(location), currentGame);
+                listDataChild.put(listDataHeader.get(location), moves);
                 location++;
             };
         }

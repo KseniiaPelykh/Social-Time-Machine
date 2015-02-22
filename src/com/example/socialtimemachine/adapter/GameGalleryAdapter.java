@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.socialtimemachine.FullImageActivity;
 import com.example.socialtimemachine.R;
+import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
@@ -23,13 +24,13 @@ import java.util.List;
 public class GameGalleryAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private List<String> listDataHeader; // name of games
-    private HashMap<String, List<String>> listDataChild;
+    private List<ParseObject> listDataHeader; // name of games
+    private HashMap<ParseObject, List<ParseObject>> listDataChild;
 
     public  GameGalleryAdapter(
             Context context,
-            List<String> listDataHeader,
-            HashMap<String, List<String>> listDataChild)
+            List<ParseObject> listDataHeader,
+            HashMap<ParseObject, List<ParseObject>> listDataChild)
     {
         this.context = context;
         this.listDataHeader = listDataHeader;
@@ -51,25 +52,13 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
             View convertView,
             ViewGroup parent){
 
-        final String moveId = (String) getChild(groupPosition, childPosition);
+        final ParseObject move = (ParseObject) getChild(groupPosition, childPosition);
 
         if (convertView == null){
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             convertView = infalInflater.inflate(R.layout.game_gallery_list_item, null);
-        }
-
-        ParseObject move = new ParseObject("Part");
-
-        try {
-            move = new ParseQuery("Part")
-                    .get(moveId);
-
-            Log.i("Insiede adapter partID: ", moveId);
-        }
-        catch (Exception e){
-            Log.i("Move Error", e.toString());
         }
 
         ParseImageView image = (ParseImageView) convertView
@@ -126,15 +115,7 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
             boolean isExpanded,
             View convertView,
             ViewGroup parent){
-        String gameId = (String) getGroup(groupPosition);
-
-        ParseObject game = new ParseObject("Game");
-        try {
-            game = new ParseQuery("Game").get(gameId);
-        }
-        catch (Exception e){
-            Log.i("Game error", e.toString());
-        }
+        ParseObject game = (ParseObject) getGroup(groupPosition);
 
         if (convertView == null){
             LayoutInflater infalInflater = (LayoutInflater)this.context
