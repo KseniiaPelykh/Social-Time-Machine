@@ -38,9 +38,9 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition){
-        return  this.listDataChild
-                    .get(this.listDataHeader.get(groupPosition))
-                    .get(childPosition);
+        return listDataChild
+                .get(listDataHeader.get(groupPosition))
+                .get(childPosition);
     }
 
     @Override

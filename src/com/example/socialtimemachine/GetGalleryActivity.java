@@ -58,9 +58,6 @@ public class GetGalleryActivity extends Activity {
         protected void onPostExecute(Void result) {
             expandableListView = (ExpandableListView) GetGalleryActivity.this.findViewById(R.id.gallery_list);
             expandableListView.setAdapter(gameGalleryAdapter);
-            int count = gameGalleryAdapter.getGroupCount();
-            for (int position = 1; position <= count; position++)
-                expandableListView.expandGroup(position - 1);
             mProgressDialog.dismiss();
         }
 
@@ -90,7 +87,7 @@ public class GetGalleryActivity extends Activity {
                     Log.i("Get Moves", e.toString());
                 }
 
-                currentGame.clear();
+                currentGame = new ArrayList<String>();
                 for (ParseObject move : moves) {
                      currentGame.add(move.getObjectId());
                      Log.i("Get Move", move.getObjectId());
