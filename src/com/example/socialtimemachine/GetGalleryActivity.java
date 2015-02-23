@@ -2,6 +2,7 @@ package com.example.socialtimemachine;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,9 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,6 +62,7 @@ public class GetGalleryActivity extends Activity {
         protected void onPostExecute(Void result) {
             expandableListView = (ExpandableListView) GetGalleryActivity.this.findViewById(R.id.gallery_list);
             expandableListView.setAdapter(gameGalleryAdapter);
+            expandableListView.setFooterDividersEnabled(true);
             mProgressDialog.dismiss();
         }
 
@@ -69,15 +73,20 @@ public class GetGalleryActivity extends Activity {
             List<ParseObject> games = Collections.EMPTY_LIST;
             List<ParseObject> moves = Collections.EMPTY_LIST;
 
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+
              try {
-                games = new ParseQuery("Game").find();
+                games = new ParseQuery("Game")
+                        .whereLessThanOrEqualTo("endFinal", date)
+                        .find();
+
             } catch (Exception e) {
                 Log.i("Get Games", e.toString());
             }
 
             for (ParseObject game : games) {
                 listDataHeader.add(game);
-                Log.i("GameId", game.getObjectId());
 
                 try {
                     moves = new ParseQuery("Part")

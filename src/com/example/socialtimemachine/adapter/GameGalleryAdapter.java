@@ -69,6 +69,9 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
             image.loadInBackground();
         }
 
+        TextView descriptionView = (TextView)convertView.findViewById(R.id.game_gallery_description);
+        descriptionView.setText(move.getString("description"));
+
         return  convertView;
     }
 

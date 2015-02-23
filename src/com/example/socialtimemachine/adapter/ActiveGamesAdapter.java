@@ -39,8 +39,6 @@ public class ActiveGamesAdapter extends ParseQueryAdapter {
 
                  Calendar cal = Calendar.getInstance();
                  Date date = cal.getTime();
-                 Log.i("Date:", date.toString());
-                 Log.i("UserId:", userId);
 
                  ParseQuery query = new ParseQuery("Game")
                          .whereEqualTo("users", userId)
