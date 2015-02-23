@@ -23,7 +23,7 @@ public class FullImageActivity extends Activity {
         ParseObject move = new ParseObject("Part");
 
         try{
-            new ParseQuery("Part").get(partId);
+            move = new ParseQuery("Part").get(partId);
         }
         catch (Exception e){
             Log.i("Get part error:", e.toString());

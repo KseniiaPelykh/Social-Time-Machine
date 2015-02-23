@@ -69,6 +69,17 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
             image.loadInBackground();
         }
 
+        image.setOnClickListener(
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent fullImage = new Intent(context, FullImageActivity.class);
+                    fullImage.putExtra("PartId", move.getObjectId());
+                    context.startActivity(fullImage);
+                }
+            }
+        );
+
         TextView descriptionView = (TextView)convertView.findViewById(R.id.game_gallery_description);
         descriptionView.setText(move.getString("description"));
 
@@ -139,13 +150,7 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
     @Override
     public View getItemView(final ParseObject object, View v, ViewGroup parent) {
 
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent fullImage = new Intent( getContext(),FullImageActivity.class);
-                fullImage.putExtra("PartId", object.getObjectId());
-                getContext().startActivity(fullImage);
-            }
+        v.setOnClickListener(
         });
 
         return  v;
