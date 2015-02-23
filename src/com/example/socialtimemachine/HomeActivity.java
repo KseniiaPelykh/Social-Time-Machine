@@ -106,19 +106,24 @@ public class HomeActivity extends FragmentActivity {
 
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-
                 return true;
 
             case R.id.get_active_games:
                 Intent getActiveGames = new Intent(this, GetActiveGamesActivity.class);
                 getActiveGames.putExtra("UserId", userId);
                 startActivity(getActiveGames);
+                return true;
+
             case R.id.get_gallery:
                 Intent getGallery = new Intent(this, GetGalleryActivity.class);
                 getGallery.putExtra("UserId", userId);
                 startActivity(getGallery);
+                return  true;
+
             case R.id.invite_friends:
                 sendRequestDialog();
+                return  true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

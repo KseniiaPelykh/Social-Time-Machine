@@ -2,11 +2,13 @@ package com.example.socialtimemachine.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.socialtimemachine.FullImageActivity;
@@ -83,6 +85,24 @@ public class GameGalleryAdapter extends BaseExpandableListAdapter {
         TextView descriptionView = (TextView)convertView.findViewById(R.id.game_gallery_description);
         descriptionView.setText(move.getString("description"));
 
+        final TextView moveVoteCountView = (TextView)convertView.findViewById(R.id.move_vote_count);
+        int voteCount = move.getInt("vote");
+        moveVoteCountView.setText(voteCount + "");
+
+        ImageView voteView = (ImageView)convertView.findViewById(R.id.move_vote);
+
+        voteView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v){
+                        int voteCount = move.getInt("vote");
+                        voteCount++;
+                        move.put("vote", voteCount);
+                        move.saveInBackground();
+                        moveVoteCountView.setText(voteCount + "");
+                    }
+                }
+        );
         return  convertView;
     }
 

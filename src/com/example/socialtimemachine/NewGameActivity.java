@@ -346,6 +346,7 @@ public class NewGameActivity extends FragmentActivity {
                     newpart.put("gameParent",newgame);
                     newpart.put("description", gameDescription.getText().toString());
                     newpart.put("user", userId);
+                    newpart.put("vote", 0);
                     newpart.saveInBackground();
 
                     Intent intent = new Intent(this, HomeActivity.class);
