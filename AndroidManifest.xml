@@ -70,14 +70,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.socialtimemachine.GameGalleryActivity"
-            android:label="@string/get_gallery">
-            <intent-filter>
-                <action android:name="com.example.socialtimemachine.GameGalleryActivity" />
-                <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".GetGalleryActivity"
             android:label="@string/get_gallery">
             <intent-filter>

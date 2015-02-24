@@ -57,9 +57,6 @@ public class CustomAdapter extends ParseQueryAdapter {
 		 super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
 		   public ParseQuery create() {
 
-               Log.i("Type", "type" + type);
-               Log.i("Custom Adapter userID", userId);
-
                ParseQuery query = null;
                if (type == GET_ALL_GAMES) {
                    query = new ParseQuery("Part");
