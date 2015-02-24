@@ -28,36 +28,18 @@ import com.parse.ParseInstallation;
 
 public class HomeActivity extends FragmentActivity {
 
-    private SelectionFragment selectionFragment;
     private String userId;
     private SlidingTabLayout mSlidingTabLayout;
-    private ViewPager mViewPager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUserId();
-
         setContentView(R.layout.activity_home);
-
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
-        // mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        // mViewPager.setAdapter(new TabPagerAdapter(this.getSupportFragmentManager()));
-
-        // Give the SlidingTabLayout the ViewPager, this must be done AFTER the ViewPager has had
-        // it's PagerAdapter set.
-        //mSlidingTabLayout=(SlidingTabLayout)findViewById(R.id.sliding_tabs);
-       // findViewById(R.id.sliding_tabs);
-       // mSlidingTabLayout.setViewPager(mViewPager);
+        mSlidingTabLayout=(SlidingTabLayout)findViewById(R.id.sliding_tabs);
+        mSlidingTabLayout.populateTabStrip();
 
         if(savedInstanceState==null)
         {
-            // Add fragments to activity setup
-            /*selectionFragment = new SelectionFragment();
-            getSupportFragmentManager()
-            .beginTransaction()
-            .add(R.id.selection_container, selectionFragment)
-            .commit();*/
-
             HistoryFragment history = new HistoryFragment();
             getSupportFragmentManager()
             .beginTransaction()
@@ -74,10 +56,6 @@ public class HomeActivity extends FragmentActivity {
         }
         else
         {
-            // Or set the fragment from restored state info
-            //selectionFragment = (SelectionFragment) getSupportFragmentManager()
-                 //.findFragmentById(R.id.selection_container);
-
             HistoryFragment history = (HistoryFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.history_container);
         }
@@ -150,56 +128,6 @@ public class HomeActivity extends FragmentActivity {
                 }
             });
             Request.executeBatchAsync(request);
-        }
-    }
-
-    public class TabPagerAdapter extends FragmentStatePagerAdapter{
-        public TabPagerAdapter(FragmentManager fragmentManager)
-        {
-            super(fragmentManager);
-        }
-
-       @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            Log.i("v", "Position" + position);
-            Fragment fragment = (Fragment) super.instantiateItem(container, position);
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new MyHistoryFragment();
-                case 1:
-                    return new FriendsHistoryFragment();
-                default:
-                    return new HistoryFragment();
-            }
-         }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            super.destroyItem(container, position, object);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position){
-                case 0:
-                    return "My History";
-                case 1:
-                    return "Friend's History";
-                case 2:
-                    return "All History";
-                default:
-                    return "No Title";
-            }
         }
     }
 

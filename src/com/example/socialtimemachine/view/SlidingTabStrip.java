@@ -108,7 +108,7 @@ class SlidingTabStrip extends LinearLayout {
         invalidate();
     }
 
-    void onViewPagerPageChanged(int position, float positionOffset) {
+    void onTabChanged(int position, float positionOffset) {
         mSelectedPosition = position;
         mSelectionOffset = positionOffset;
         invalidate();
