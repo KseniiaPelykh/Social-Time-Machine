@@ -27,7 +27,6 @@ import java.util.List;
 
 public class ActiveGamesAdapter extends ParseQueryAdapter {
 
-    ProgressDialog mProgressDialog;
     static DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.LONG);
     static DateFormat timeFormatter = new SimpleDateFormat("hh:mm");
     static String partId;
