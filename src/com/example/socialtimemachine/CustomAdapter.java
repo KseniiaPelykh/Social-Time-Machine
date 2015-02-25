@@ -69,6 +69,7 @@ public class CustomAdapter extends ParseQueryAdapter {
                         .whereNotEqualTo("user", userId);
                }
 
+               query.orderByDescending("createAt");
                query.include("gameParent");
 
                return query;
