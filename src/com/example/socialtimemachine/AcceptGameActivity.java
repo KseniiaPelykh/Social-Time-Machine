@@ -129,7 +129,7 @@ public class AcceptGameActivity extends Activity {
             mProgressDialog = new ProgressDialog(AcceptGameActivity.this);
 
             // Set progressdialog title
-            mProgressDialog.setTitle("History");
+            mProgressDialog.setTitle("Accept");
             // Set progressdialog message
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);

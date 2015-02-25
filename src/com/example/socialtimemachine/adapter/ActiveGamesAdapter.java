@@ -39,10 +39,11 @@ public class ActiveGamesAdapter extends ParseQueryAdapter {
                  Calendar cal = Calendar.getInstance();
                  Date date = cal.getTime();
 
-                 ParseQuery query = new ParseQuery("Game")
-                         .whereEqualTo("users", userId)
-                         .whereLessThanOrEqualTo("startFinal", date)
-                         .whereGreaterThanOrEqualTo("endFinal", date);
+                 ParseQuery query = new ParseQuery("Game");
+
+                 query.whereEqualTo("users", userId)
+                      .whereLessThanOrEqualTo("startFinal", date)
+                      .whereGreaterThanOrEqualTo("endFinal", date);
 
                  return query;
              }
